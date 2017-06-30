@@ -1,0 +1,3195 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/31/2017 3:18:01 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DS130"
+  DTS:CreatorName="DS130\ML"
+  DTS:DTSID="{0E9CFA75-B404-4453-B005-DAAC0172B059}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1060"
+  DTS:ObjectName="CustomWebServiceSource"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{863961BA-E1FC-4E91-91AB-11821F80EA02}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{49E043C3-0085-40EB-A8C1-0122587F1037}"
+      DTS:ObjectName="CountryName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">France</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{041BDC75-6DEC-4D20-8BF3-58233DBE7454}"
+      DTS:ObjectName="JSONFileNameFormat">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">AirportInfo_{0:D3}.JSON</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{60C23408-A19B-47B3-9C66-F89D8F3EC982}"
+      DTS:ObjectName="JSONFilePath">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">C:\SSIS2016Cookbook\Chapter07\Files</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Airport Information"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BA805821-8708-46CC-A798-924E4F92188E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Airport Information"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Airport Information\Airport Info by Country"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;11"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Airport Info by Country"
+              version="11">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="42">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SC_04df03808e054a509e49d4cce022812c.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SC_04df03808e054a509e49d4cce022812c_AirportInfo_airport" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.webservicex.net/airport.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+using SC_04df03808e054a509e49d4cce022812c.AirportInfo;
+using System.Xml;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    private String _countryName;
+    private String _airportXPath = @"/NewDataSet/Table";
+    private XmlNodeList _airportXmlNodes;
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+
+        _countryName = Variables.CountryName;
+
+        airport airportInfo = new airport();
+        String airportInfoByCountry = airportInfo.GetAirportInformationByCountry(_countryName);
+        XmlDocument airportInfoByCountryXml = new XmlDocument();
+        airportInfoByCountryXml.LoadXml(airportInfoByCountry);
+        _airportXmlNodes = airportInfoByCountryXml.SelectNodes(_airportXPath);
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+    }
+
+    public override void CreateNewOutputRows()
+    {
+        foreach (XmlNode airportXmlNode in _airportXmlNodes)
+        {
+            AirportInfoOutputBuffer.AddRow();
+
+            AirportInfoOutputBuffer.Country = _countryName;
+            AirportInfoOutputBuffer.AirportName = airportXmlNode.SelectSingleNode("CityOrAirportName").InnerText;
+            AirportInfoOutputBuffer.AirportCode = airportXmlNode.SelectSingleNode("AirportCode").InnerText;
+            AirportInfoOutputBuffer.RunwayLengthFeet = Int32.Parse(airportXmlNode.SelectSingleNode("RunwayLengthFeet").InnerText);
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class AirportInfoOutputBuffer: ScriptBuffer
+
+{
+    public AirportInfoOutputBuffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String Country
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool Country_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String AirportName
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool AirportName_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String AirportCode
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool AirportCode_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 RunwayLengthFeet
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool RunwayLengthFeet_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:4.0.30319.42000
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace SC_04df03808e054a509e49d4cce022812c.Properties {
+    
+    
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://www.webservicex.net/airport.asmx")]
+        public string SC_04df03808e054a509e49d4cce022812c_AirportInfo_airport {
+            get {
+                return ((string)(this["SC_04df03808e054a509e49d4cce022812c_AirportInfo_airport"]));
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public AirportInfoOutputBuffer AirportInfoOutputBuffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != AirportInfoOutputBuffer)
+        {
+            AirportInfoOutputBuffer.SetEndOfRowset();
+            AirportInfoOutputBuffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"AirportInfoOutput"))
+            {
+                AirportInfoOutputBuffer = new AirportInfoOutputBuffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String CountryName
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["CountryName"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>SC_04df03808e054a509e49d4cce022812c</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>SC_04df03808e054a509e49d4cce022812c</msb:DisplayName>
+		<msb:ProjectId>{24C51933-AAA0-4B8C-B9BE-99143134FD98}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="SC_04df03808e054a509e49d4cce022812c.csproj"/>
+		<msb:File Include="Web References\AirportInfo\Reference.cs"/>
+		<msb:File Include="app.config"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="Web References\AirportInfo\airport.wsdl"/>
+		<msb:File Include="Web References\AirportInfo\Reference.map"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_04df03808e054a509e49d4cce022812c.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{906A91DF-FA91-4D75-9DD9-0A00D5495A1F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_04df03808e054a509e49d4cce022812c</RootNamespace>
+    <AssemblyName>SC_04df03808e054a509e49d4cce022812c</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Web References\AirportInfo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Web References\AirportInfo\airport.wsdl" />
+    <None Include="Web References\AirportInfo\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://www.webservicex.net/airport.asmx%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AirportInfo\</RelPath>
+      <UpdateFromURL>http://www.webservicex.net/airport.asmx%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL></ServiceLocationURL>
+      <CachedDynamicPropName></CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SC_04df03808e054a509e49d4cce022812c_AirportInfo_airport</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_04df03808e054a509e49d4cce022812c")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_04df03808e054a509e49d4cce022812c")]
+[assembly: AssemblyCopyright("Copyright @  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_04df03808e054a509e49d4cce022812c.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_04df03808e054a509e49d4cce022812c.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_04df03808e054a509e49d4cce022812c.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_04df03808e054a509e49d4cce022812c.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_04df03808e054a509e49d4cce022812c.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Web References\AirportInfo\Reference.map]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://www.webservicex.net/airport.asmx?WSDL" filename="airport.wsdl" />
+  </Results>
+</DiscoveryClientResultsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[app.config]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="SC_04df03808e054a509e49d4cce022812c.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <applicationSettings>
+        <SC_04df03808e054a509e49d4cce022812c.Properties.Settings>
+            <setting name="SC_04df03808e054a509e49d4cce022812c_AirportInfo_airport"
+                serializeAs="String">
+                <value>http://www.webservicex.net/airport.asmx</value>
+            </setting>
+        </SC_04df03808e054a509e49d4cce022812c.Properties.Settings>
+    </applicationSettings>
+</configuration>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Web References\AirportInfo\Reference.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//     Runtime Version:4.0.30319.42000
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+// 
+// This source code was auto-generated by Microsoft.VSDesigner, Version 4.0.30319.42000.
+// 
+#pragma warning disable 1591
+
+namespace SC_04df03808e054a509e49d4cce022812c.AirportInfo {
+    using System;
+    using System.Web.Services;
+    using System.Diagnostics;
+    using System.Web.Services.Protocols;
+    using System.Xml.Serialization;
+    using System.ComponentModel;
+    
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="airportSoap", Namespace="http://www.webserviceX.NET")]
+    public partial class airport : System.Web.Services.Protocols.SoapHttpClientProtocol {
+        
+        private System.Threading.SendOrPostCallback getAirportInformationByISOCountryCodeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAirportInformationByCityOrAirportNameOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAirportInformationByCountryOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAirportInformationByAirportCodeOperationCompleted;
+        
+        private bool useDefaultCredentialsSetExplicitly;
+        
+        /// <remarks/>
+        public airport() {
+            this.Url = global::SC_04df03808e054a509e49d4cce022812c.Properties.Settings.Default.SC_04df03808e054a509e49d4cce022812c_AirportInfo_airport;
+            if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
+                this.UseDefaultCredentials = true;
+                this.useDefaultCredentialsSetExplicitly = false;
+            }
+            else {
+                this.useDefaultCredentialsSetExplicitly = true;
+            }
+        }
+        
+        public new string Url {
+            get {
+                return base.Url;
+            }
+            set {
+                if ((((this.IsLocalFileSystemWebService(base.Url) == true) 
+                            && (this.useDefaultCredentialsSetExplicitly == false)) 
+                            && (this.IsLocalFileSystemWebService(value) == false))) {
+                    base.UseDefaultCredentials = false;
+                }
+                base.Url = value;
+            }
+        }
+        
+        public new bool UseDefaultCredentials {
+            get {
+                return base.UseDefaultCredentials;
+            }
+            set {
+                base.UseDefaultCredentials = value;
+                this.useDefaultCredentialsSetExplicitly = true;
+            }
+        }
+        
+        /// <remarks/>
+        public event getAirportInformationByISOCountryCodeCompletedEventHandler getAirportInformationByISOCountryCodeCompleted;
+        
+        /// <remarks/>
+        public event getAirportInformationByCityOrAirportNameCompletedEventHandler getAirportInformationByCityOrAirportNameCompleted;
+        
+        /// <remarks/>
+        public event GetAirportInformationByCountryCompletedEventHandler GetAirportInformationByCountryCompleted;
+        
+        /// <remarks/>
+        public event getAirportInformationByAirportCodeCompletedEventHandler getAirportInformationByAirportCodeCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.webserviceX.NET/getAirportInformationByISOCountryCode", RequestNamespace="http://www.webserviceX.NET", ResponseNamespace="http://www.webserviceX.NET", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAirportInformationByISOCountryCode(string CountryAbbrviation) {
+            object[] results = this.Invoke("getAirportInformationByISOCountryCode", new object[] {
+                        CountryAbbrviation});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAirportInformationByISOCountryCodeAsync(string CountryAbbrviation) {
+            this.getAirportInformationByISOCountryCodeAsync(CountryAbbrviation, null);
+        }
+        
+        /// <remarks/>
+        public void getAirportInformationByISOCountryCodeAsync(string CountryAbbrviation, object userState) {
+            if ((this.getAirportInformationByISOCountryCodeOperationCompleted == null)) {
+                this.getAirportInformationByISOCountryCodeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAirportInformationByISOCountryCodeOperationCompleted);
+            }
+            this.InvokeAsync("getAirportInformationByISOCountryCode", new object[] {
+                        CountryAbbrviation}, this.getAirportInformationByISOCountryCodeOperationCompleted, userState);
+        }
+        
+        private void OngetAirportInformationByISOCountryCodeOperationCompleted(object arg) {
+            if ((this.getAirportInformationByISOCountryCodeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAirportInformationByISOCountryCodeCompleted(this, new getAirportInformationByISOCountryCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.webserviceX.NET/getAirportInformationByCityOrAirportName", RequestNamespace="http://www.webserviceX.NET", ResponseNamespace="http://www.webserviceX.NET", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAirportInformationByCityOrAirportName(string cityOrAirportName) {
+            object[] results = this.Invoke("getAirportInformationByCityOrAirportName", new object[] {
+                        cityOrAirportName});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAirportInformationByCityOrAirportNameAsync(string cityOrAirportName) {
+            this.getAirportInformationByCityOrAirportNameAsync(cityOrAirportName, null);
+        }
+        
+        /// <remarks/>
+        public void getAirportInformationByCityOrAirportNameAsync(string cityOrAirportName, object userState) {
+            if ((this.getAirportInformationByCityOrAirportNameOperationCompleted == null)) {
+                this.getAirportInformationByCityOrAirportNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAirportInformationByCityOrAirportNameOperationCompleted);
+            }
+            this.InvokeAsync("getAirportInformationByCityOrAirportName", new object[] {
+                        cityOrAirportName}, this.getAirportInformationByCityOrAirportNameOperationCompleted, userState);
+        }
+        
+        private void OngetAirportInformationByCityOrAirportNameOperationCompleted(object arg) {
+            if ((this.getAirportInformationByCityOrAirportNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAirportInformationByCityOrAirportNameCompleted(this, new getAirportInformationByCityOrAirportNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.webserviceX.NET/GetAirportInformationByCountry", RequestNamespace="http://www.webserviceX.NET", ResponseNamespace="http://www.webserviceX.NET", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string GetAirportInformationByCountry(string country) {
+            object[] results = this.Invoke("GetAirportInformationByCountry", new object[] {
+                        country});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAirportInformationByCountryAsync(string country) {
+            this.GetAirportInformationByCountryAsync(country, null);
+        }
+        
+        /// <remarks/>
+        public void GetAirportInformationByCountryAsync(string country, object userState) {
+            if ((this.GetAirportInformationByCountryOperationCompleted == null)) {
+                this.GetAirportInformationByCountryOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAirportInformationByCountryOperationCompleted);
+            }
+            this.InvokeAsync("GetAirportInformationByCountry", new object[] {
+                        country}, this.GetAirportInformationByCountryOperationCompleted, userState);
+        }
+        
+        private void OnGetAirportInformationByCountryOperationCompleted(object arg) {
+            if ((this.GetAirportInformationByCountryCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAirportInformationByCountryCompleted(this, new GetAirportInformationByCountryCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.webserviceX.NET/getAirportInformationByAirportCode", RequestNamespace="http://www.webserviceX.NET", ResponseNamespace="http://www.webserviceX.NET", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getAirportInformationByAirportCode(string airportCode) {
+            object[] results = this.Invoke("getAirportInformationByAirportCode", new object[] {
+                        airportCode});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAirportInformationByAirportCodeAsync(string airportCode) {
+            this.getAirportInformationByAirportCodeAsync(airportCode, null);
+        }
+        
+        /// <remarks/>
+        public void getAirportInformationByAirportCodeAsync(string airportCode, object userState) {
+            if ((this.getAirportInformationByAirportCodeOperationCompleted == null)) {
+                this.getAirportInformationByAirportCodeOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAirportInformationByAirportCodeOperationCompleted);
+            }
+            this.InvokeAsync("getAirportInformationByAirportCode", new object[] {
+                        airportCode}, this.getAirportInformationByAirportCodeOperationCompleted, userState);
+        }
+        
+        private void OngetAirportInformationByAirportCodeOperationCompleted(object arg) {
+            if ((this.getAirportInformationByAirportCodeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAirportInformationByAirportCodeCompleted(this, new getAirportInformationByAirportCodeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        public new void CancelAsync(object userState) {
+            base.CancelAsync(userState);
+        }
+        
+        private bool IsLocalFileSystemWebService(string url) {
+            if (((url == null) 
+                        || (url == string.Empty))) {
+                return false;
+            }
+            System.Uri wsUri = new System.Uri(url);
+            if (((wsUri.Port >= 1024) 
+                        && (string.Compare(wsUri.Host, "localHost", System.StringComparison.OrdinalIgnoreCase) == 0))) {
+                return true;
+            }
+            return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void getAirportInformationByISOCountryCodeCompletedEventHandler(object sender, getAirportInformationByISOCountryCodeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAirportInformationByISOCountryCodeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAirportInformationByISOCountryCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void getAirportInformationByCityOrAirportNameCompletedEventHandler(object sender, getAirportInformationByCityOrAirportNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAirportInformationByCityOrAirportNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAirportInformationByCityOrAirportNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void GetAirportInformationByCountryCompletedEventHandler(object sender, GetAirportInformationByCountryCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAirportInformationByCountryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAirportInformationByCountryCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    public delegate void getAirportInformationByAirportCodeCompletedEventHandler(object sender, getAirportInformationByAirportCodeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAirportInformationByAirportCodeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAirportInformationByAirportCodeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+}
+
+#pragma warning restore 1591]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Web References\AirportInfo\airport.wsdl]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.webserviceX.NET" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.webserviceX.NET" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="getAirportInformationByISOCountryCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CountryAbbrviation" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAirportInformationByISOCountryCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAirportInformationByISOCountryCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAirportInformationByCityOrAirportName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cityOrAirportName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAirportInformationByCityOrAirportNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAirportInformationByCityOrAirportNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAirportInformationByCountry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAirportInformationByCountryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAirportInformationByCountryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAirportInformationByAirportCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="airportCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAirportInformationByAirportCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAirportInformationByAirportCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getAirportInformationByISOCountryCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:getAirportInformationByISOCountryCode" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByISOCountryCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:getAirportInformationByISOCountryCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByCityOrAirportNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getAirportInformationByCityOrAirportName" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByCityOrAirportNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getAirportInformationByCityOrAirportNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAirportInformationByCountrySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAirportInformationByCountry" />
+  </wsdl:message>
+  <wsdl:message name="GetAirportInformationByCountrySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAirportInformationByCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByAirportCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:getAirportInformationByAirportCode" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByAirportCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:getAirportInformationByAirportCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByISOCountryCodeHttpGetIn">
+    <wsdl:part name="CountryAbbrviation" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByISOCountryCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByCityOrAirportNameHttpGetIn">
+    <wsdl:part name="cityOrAirportName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByCityOrAirportNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAirportInformationByCountryHttpGetIn">
+    <wsdl:part name="country" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAirportInformationByCountryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByAirportCodeHttpGetIn">
+    <wsdl:part name="airportCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByAirportCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByISOCountryCodeHttpPostIn">
+    <wsdl:part name="CountryAbbrviation" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByISOCountryCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByCityOrAirportNameHttpPostIn">
+    <wsdl:part name="cityOrAirportName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByCityOrAirportNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAirportInformationByCountryHttpPostIn">
+    <wsdl:part name="country" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAirportInformationByCountryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByAirportCodeHttpPostIn">
+    <wsdl:part name="airportCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAirportInformationByAirportCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="airportSoap">
+    <wsdl:operation name="getAirportInformationByISOCountryCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by ISO country code </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByISOCountryCodeSoapIn" />
+      <wsdl:output message="tns:getAirportInformationByISOCountryCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByCityOrAirportName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by city or airport name </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByCityOrAirportNameSoapIn" />
+      <wsdl:output message="tns:getAirportInformationByCityOrAirportNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportInformationByCountry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by country name </wsdl:documentation>
+      <wsdl:input message="tns:GetAirportInformationByCountrySoapIn" />
+      <wsdl:output message="tns:GetAirportInformationByCountrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByAirportCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by airport code </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByAirportCodeSoapIn" />
+      <wsdl:output message="tns:getAirportInformationByAirportCodeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="airportHttpGet">
+    <wsdl:operation name="getAirportInformationByISOCountryCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by ISO country code </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByISOCountryCodeHttpGetIn" />
+      <wsdl:output message="tns:getAirportInformationByISOCountryCodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByCityOrAirportName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by city or airport name </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByCityOrAirportNameHttpGetIn" />
+      <wsdl:output message="tns:getAirportInformationByCityOrAirportNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportInformationByCountry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by country name </wsdl:documentation>
+      <wsdl:input message="tns:GetAirportInformationByCountryHttpGetIn" />
+      <wsdl:output message="tns:GetAirportInformationByCountryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByAirportCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by airport code </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByAirportCodeHttpGetIn" />
+      <wsdl:output message="tns:getAirportInformationByAirportCodeHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="airportHttpPost">
+    <wsdl:operation name="getAirportInformationByISOCountryCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by ISO country code </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByISOCountryCodeHttpPostIn" />
+      <wsdl:output message="tns:getAirportInformationByISOCountryCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByCityOrAirportName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by city or airport name </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByCityOrAirportNameHttpPostIn" />
+      <wsdl:output message="tns:getAirportInformationByCityOrAirportNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportInformationByCountry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by country name </wsdl:documentation>
+      <wsdl:input message="tns:GetAirportInformationByCountryHttpPostIn" />
+      <wsdl:output message="tns:GetAirportInformationByCountryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByAirportCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Airport Code, CityOrAirport Name, Country, Country Abbrv, CountryCode,GMT Offset Runway Length in Feet, Runway Elevation in Feet,Latitude in Degree,Latitude in Minute Latitude in Second,Latitude in N/S, Longitude in Degree, Longitude in Minute, Longitude in Seconds and longitude E/W by airport code </wsdl:documentation>
+      <wsdl:input message="tns:getAirportInformationByAirportCodeHttpPostIn" />
+      <wsdl:output message="tns:getAirportInformationByAirportCodeHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="airportSoap" type="tns:airportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAirportInformationByISOCountryCode">
+      <soap:operation soapAction="http://www.webserviceX.NET/getAirportInformationByISOCountryCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByCityOrAirportName">
+      <soap:operation soapAction="http://www.webserviceX.NET/getAirportInformationByCityOrAirportName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportInformationByCountry">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetAirportInformationByCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByAirportCode">
+      <soap:operation soapAction="http://www.webserviceX.NET/getAirportInformationByAirportCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="airportSoap12" type="tns:airportSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAirportInformationByISOCountryCode">
+      <soap12:operation soapAction="http://www.webserviceX.NET/getAirportInformationByISOCountryCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByCityOrAirportName">
+      <soap12:operation soapAction="http://www.webserviceX.NET/getAirportInformationByCityOrAirportName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportInformationByCountry">
+      <soap12:operation soapAction="http://www.webserviceX.NET/GetAirportInformationByCountry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByAirportCode">
+      <soap12:operation soapAction="http://www.webserviceX.NET/getAirportInformationByAirportCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="airportHttpGet" type="tns:airportHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getAirportInformationByISOCountryCode">
+      <http:operation location="/getAirportInformationByISOCountryCode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByCityOrAirportName">
+      <http:operation location="/getAirportInformationByCityOrAirportName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportInformationByCountry">
+      <http:operation location="/GetAirportInformationByCountry" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByAirportCode">
+      <http:operation location="/getAirportInformationByAirportCode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="airportHttpPost" type="tns:airportHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getAirportInformationByISOCountryCode">
+      <http:operation location="/getAirportInformationByISOCountryCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByCityOrAirportName">
+      <http:operation location="/getAirportInformationByCityOrAirportName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportInformationByCountry">
+      <http:operation location="/GetAirportInformationByCountry" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirportInformationByAirportCode">
+      <http:operation location="/getAirportInformationByAirportCode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="airport">
+    <wsdl:port name="airportSoap" binding="tns:airportSoap">
+      <soap:address location="http://www.webservicex.net/airport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="airportSoap12" binding="tns:airportSoap12">
+      <soap12:address location="http://www.webservicex.net/airport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="airportHttpGet" binding="tns:airportHttpGet">
+      <http:address location="http://www.webservicex.net/airport.asmx" />
+    </wsdl:port>
+    <wsdl:port name="airportHttpPost" binding="tns:airportHttpPost">
+      <http:address location="http://www.webservicex.net/airport.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_04df03808e054a509e49d4cce022812c.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDADpLL1kAAAAAAAAAAOAAIiALATAAAD4AAAAIAAAAAAAAklwA
+AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAEBcAABPAAAAAGAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAmDwAAAAgAAAAPgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAYAAAAAYAAABAAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAIAAAAACAAAARgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAB0
+XAAAAAAAAEgAAAACAAUAaCkAACAyAAABAAAAAAAAAIhbAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwAwBIAAAAAQAAEQIoGAAACgICewUAAARvGAAABn0BAAAE
+cyEAAAYCewEAAARvNgAABgpzGQAACgsHBm8aAAAKAgcCewIAAARvGwAACn0DAAAEKh4CKBwAAAoq
+GzADAKsAAAACAAARAnsDAAAEbx0AAAoKK34Gbx4AAAp0EQAAAQsCewYAAARvDgAABgJ7BgAABAJ7
+AQAABG8GAAAGAnsGAAAEB3IBAABwbx8AAApvIAAACm8IAAAGAnsGAAAEB3IlAABwbx8AAApvIAAA
+Cm8KAAAGAnsGAAAEB3I9AABwbx8AAApvIAAACighAAAKbwwAAAYGbyIAAAo6d////94RBnUSAAAB
+DAgsBghvIwAACtwqAAEQAAACAAwAjZkAEQAAAABKAnJfAABwfQIAAAQCKBEAAAYqKgIDBAUoJAAA
+CiomAhYDKCUAAAoqWgMsCAIWKCYAAAoqcoMAAHBzJwAACnomAhcDKCUAAAoqWgMsCAIXKCYAAAoq
+coMAAHBzJwAACnomAhgDKCUAAAoqWgMsCAIYKCYAAAoqcoMAAHBzJwAACno6AhkDjDMAAAEoJQAA
+CipaAywIAhkoJgAACipygwAAcHMnAAAKeh4CKCgAAAoqHgIoKQAACioeAigqAAAKKn4CKCsAAAoC
+AnMWAAAGfQQAAAQCAnMXAAAGfQUAAAQqBipuAnsGAAAELBICewYAAARvDwAABgIUfQYAAAQqAAAA
+EzAFAEkAAAADAAARFgorLgQGlA4EciABAHAoLAAACjMZAgUGmgIEBpQoLQAACg4EcwUAAAZ9BgAA
+BAYXWAoGAzLOAm8VAAAGAm8SAAAGAigTAAAGKjoCKC4AAAoCA30HAAAEKjoCKC4AAAoCA30IAAAE
+KpYCewgAAARvLwAACnJEAQBwbzAAAAooMQAACm8yAAAKdDkAAAEqHgIoLgAACiqufgkAAAQtHnJc
+AQBw0AcAAAIoMwAACm80AAAKczUAAAqACQAABH4JAAAEKhp+CgAABCoeAoAKAAAEKhp+CwAABCpG
+AnLOAQBwbzYAAAp0OQAAASoeAig3AAAKKlZzHwAABig4AAAKdAgAAAKACwAABCruAig5AAAKAigd
+AAAGbx4AAAYoIwAABgICKCIAAAYoPwAABiwPAhcoJQAABgIWfRAAAAQqAhd9EAAABCoeAig6AAAK
+KroCAig6AAAKKD8AAAYsGAJ7EAAABC0QAgMoPwAABi0HAhYoOwAACgIDKDwAAAoqHgIoPQAACio+
+AgMoOwAACgIXfRAAAAQqAAATMAMAKQAAAAQAABECexEAAAQKBgsHAyg+AAAKdAoAAAIMAnwRAAAE
+CAcoAQAAKwoGBzPfKgAAABMwAwApAAAABAAAEQJ7EQAABAoGCwcDKEAAAAp0CgAAAgwCfBEAAAQI
+BygBAAArCgYHM98qAAAAEzADACkAAAAFAAARAnsSAAAECgYLBwMoPgAACnQMAAACDAJ8EgAABAgH
+KAIAACsKBgcz3yoAAAATMAMAKQAAAAUAABECexIAAAQKBgsHAyhAAAAKdAwAAAIMAnwSAAAECAco
+AgAAKwoGBzPfKgAAABMwAwApAAAABgAAEQJ7EwAABAoGCwcDKD4AAAp0DgAAAgwCfBMAAAQIBygD
+AAArCgYHM98qAAAAEzADACkAAAAGAAARAnsTAAAECgYLBwMoQAAACnQOAAACDAJ8EwAABAgHKAMA
+ACsKBgcz3yoAAAATMAMAKQAAAAcAABECexQAAAQKBgsHAyg+AAAKdBAAAAIMAnwUAAAECAcoBAAA
+KwoGBzPfKgAAABMwAwApAAAABwAAEQJ7FAAABAoGCwcDKEAAAAp0EAAAAgwCfBQAAAQIBygEAAAr
+CgYHM98qdgJyPgIAcBeNFwAAASUWA6IoQQAAChaadDkAAAEqJgIDFCgwAAAGKt4CewwAAAQtEgIC
+/gYxAAAGc0IAAAp9DAAABAJyPgIAcBeNFwAAASUWA6ICewwAAAQEKEMAAAoqAAAAEzAGADkAAAAI
+AAARAnsRAAAELDADdCwAAAEKAnsRAAAEAgZvRAAACgZvRQAACgZvRgAACgZvRwAACnNEAAAGb0EA
+AAYqdgJyigIAcBeNFwAAASUWA6IoQQAAChaadDkAAAEqJgIDFCg0AAAGKt4Cew0AAAQtEgIC/gY1
+AAAGc0IAAAp9DQAABAJyigIAcBeNFwAAASUWA6ICew0AAAQEKEMAAAoqAAAAEzAGADkAAAAIAAAR
+AnsSAAAELDADdCwAAAEKAnsSAAAEAgZvRAAACgZvRQAACgZvRgAACgZvRwAACnNKAAAGb0cAAAYq
+dgJy3AIAcBeNFwAAASUWA6IoQQAAChaadDkAAAEqJgIDFCg4AAAGKt4Cew4AAAQtEgIC/gY5AAAG
+c0IAAAp9DgAABAJy3AIAcBeNFwAAASUWA6ICew4AAAQEKEMAAAoqAAAAEzAGADkAAAAIAAARAnsT
+AAAELDADdCwAAAEKAnsTAAAEAgZvRAAACgZvRQAACgZvRgAACgZvRwAACnNQAAAGb00AAAYqdgJy
+GgMAcBeNFwAAASUWA6IoQQAAChaadDkAAAEqJgIDFCg8AAAGKt4Cew8AAAQtEgIC/gY9AAAGc0IA
+AAp9DwAABAJyGgMAcBeNFwAAASUWA6ICew8AAAQEKEMAAAoqAAAAEzAGADkAAAAIAAARAnsUAAAE
+LDADdCwAAAEKAnsUAAAEAgZvRAAACgZvRQAACgZvRgAACgZvRwAACnNWAAAGb1MAAAYqIgIDKEgA
+AAoqAAATMAMAPQAAAAkAABEDLA0DfkkAAAooSgAACiwCFioDc0sAAAoKBm9MAAAKIAAEAAAyFQZv
+TQAACnJgAwBwGyhOAAAKLQIXKhYqSgIEBQ4EKE8AAAoCA30VAAAEKlICKFAAAAoCexUAAAQWmnQ5
+AAABKkoCBAUOBChPAAAKAgN9FgAABCpSAihQAAAKAnsWAAAEFpp0OQAAASpKAgQFDgQoTwAACgID
+fRcAAAQqUgIoUAAACgJ7FwAABBaadDkAAAEqSgIEBQ4EKE8AAAoCA30YAAAEKlICKFAAAAoCexgA
+AAQWmnQ5AAABKgAAAEJTSkIBAAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAAAgQAAAjfgAA
+dBAAAIwSAAAjU3RyaW5ncwAAAAAAIwAAdAMAACNVUwB0JgAAEAAAACNHVUlEAAAAhCYAAJwLAAAj
+QmxvYgAAAAAAAAACAAABVxW2AQkJAAAA+gEzABYAAAEAAABCAAAAEQAAABgAAABXAAAAZgAAAFAA
+AAA5AAAACQAAAAEAAAAEAAAACQAAABMAAAAeAAAAAQAAAAcAAAABAAAABAAAAAAAhAkBAAAAAAAG
+AP0Hhg0GAKsIhg0GALoGXw0PAPoNAAAGAOcG0goGAOAH0goGAMEH0goGAHgI0goGAB0I0goGADYI
+0goGAI0H0goGAKgH/ggKAFEIhQUOAFcREQoOAK8QEQoGAC4N9Q8OAKQEEQoGANIEdwoKAMYLhQUS
+ALcLhQUKAHULhQUKANkQhQUGAFIQdwoGAJ0GXw0GAO8Lpg0GADkLvQoWACIGbgkWAM4GbgkGAE8G
+hg0WAIYG5AwWAOoFqAoWADYHqAoWAB8JqAoWAFgHqAoWAP4GqAoGAHAHXw0WAJEIbgkaABsHcg0a
+ADoK1w8GAFIJ7QgaAGoG1w8aANsFCAsaAAIF1w8aAB4P1w8WAEAJdwoGABAGdwoGAJsQdwoGAEQJ
+dwoWAJkObgkGAPQKdwoGADoAdwoGAOQKdwoeABEA/AweAAEA/AxbAMQRAAAeACIA/AwGABgJdwoG
+AKYFdwoGAN4EdwoGAP8R0goWAPUFqAoaACgK1w8GABkGdwoGAFMB7QgaACQK1w8GACgLdwoAAAAA
+QAAAAAAAAQABAAEAEACKCgAAEAABAAEAAQAQANMLAABNAAQABQABABAAuxAAAFkABAARAAEAEAAI
+EAAAXQAHABYAAQAQAGEOAABdAAgAFwAAABAArQ0mDl0ACQAZAAABEACQDiYOfQALAB0AAQAQAE8R
+RQudAAwAIQABAQAANwxFC7kAFQBAAAEAEADmDkULxQAVAEQAAQEAAHIMRQu5ABYARgABABAANw9F
+C8UAFgBKAAEBAACwDEULuQAXAEwAAQAQAHIPRQvFABcAUAABAQAA/wtFC7kAGABSAAEAEACxDkUL
+xQAYAFYAAQBwBUQBAQAyCUQBAQAJDn4BBgAIEIIBBgBhDoYBBgDTC4oBAQDJEI4BAQDJEI4BEQB+
+CpIBEQDLBZYBEQAeBJoBAQDrAp4BAQAlA54BAQBiA54BAQC0Ap4BAQAIEqMBAQAUAqYBAQCAAqoB
+AQDGA64BAQCuAbIBAQAoELYBAQAoELYBAQAoELYBAQAoELYBUCAAAAAAxgDJCAYAAQCkIAAAAADG
+ANQIBgABAKwgAAAAAMYAPhAGAAEAdCEAAAAAhhhIDQYAAQCHIQAAAACGGEgNWQABAJIhAAAAAIYI
+RRIQAAQAnCEAAAAAhgj2CbkABQCzIQAAAACGCBUFEAAGAL0hAAAAAIYIwwm5AAcA1CEAAAAAhggu
+BBAACADeIQAAAACGCKwJuQAJAPUhAAAAAIYIYBABAAoABCIAAAAAhgjaCbkACwAbIgAAAACGAPQR
+BgAMACMiAAAAAIYAdRAGAAwAKyIAAAAAhgB4EFUADAAzIgAAAACGGEgNBgAMAFMiAAAAAMYBMBAG
+AAwAVSIAAAAAgQA/AQYADAB0IgAAAADGAI0RugEMAFMiAAAAAMYBPhAGABAAySIAAAAAhhhIDcYB
+EADYIgAAAACGGEgNxgERAOciAAAAAIYIYAVMABIADSMAAAAAgxhIDQYAEgAVIwAAAACTCOsLzAES
+AEEjAAAAAJMIswXRARIASCMAAAAAkwi/BdYBEgBQIwAAAACWCIQQ3AETAFcjAAAAAIYIGxFMABMA
+aSMAAAAAhhhIDQYAEwBxIwAAAACRGE4N4QETAIcjAAAAAIYYSA0GABMAwyMAAAAAhghRCkwAEwDL
+IwAAAACGCFkKEAATAPojAAAAAIYIow9VABQAAiQAAAAAhgi9D7kAFAAUJAAAAACGCNoB5QEVAEwk
+AAAAAIYIDQLlARYAhCQAAAAAhghDAusBFwC8JAAAAACGCHkC6wEYAPQkAAAAAIYIkwPxARkALCUA
+AAAAhgi/A/EBGgBkJQAAAACGCHcB9wEbAJwlAAAAAIYIpwH3ARwA0SUAAAAAhgBtBP0BHQDvJQAA
+AACGAKoAEAAeAPklAAAAAIYAqgACAh8ANCYAAAAAgQDpAjkBIQB5JgAAAACGACUF/QEiAJcmAAAA
+AIYA4QAQACMAoSYAAAAAhgDhAAICJADcJgAAAACBACMDOQEmACEnAAAAAIYAURL9AScAPycAAAAA
+hgAbARAAKABJJwAAAACGABsBAgIpAIQnAAAAAIEAYAM5ASsAyScAAAAAhgA+BP0BLADnJwAAAACG
+AIIAEAAtAPEnAAAAAIYAggACAi4ALCgAAAAAgQCyAjkBMABxKAAAAACGAA8BOQExAHwoAAAAAIEA
+AgQIAjIAAAAAAAMAhhhIDRcBMwAAAAAAAwDGAcsEDQI1AAAAAAADAMYBxgQUAjcAAAAAAAMAxgG8
+BCECOwDFKAAAAACDGEgNKAI8ANgoAAAAAIYIkBBMAEAAAAAAAAMAhhhIDRcBQAAAAAAAAwDGAcsE
+MwJCAAAAAAADAMYBxgQ6AkQAAAAAAAMAxgG8BCECSADtKAAAAACDGEgNKAJJAAApAAAAAIYIkBBM
+AE0AAAAAAAMAhhhIDRcBTQAAAAAAAwDGAcsERwJPAAAAAAADAMYBxgROAlEAAAAAAAMAxgG8BCEC
+VQAVKQAAAACDGEgNKAJWACgpAAAAAIYIkBBMAFoAAAAAAAMAhhhIDRcBWgAAAAAAAwDGAcsEWwJc
+AAAAAAADAMYBxgRiAl4AAAAAAAMAxgG8BCECYgA9KQAAAACDGEgNKAJjAFApAAAAAIYIkBBMAGcA
+AAABAOQLAAACAGsOAAADAIMLAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAAB
+AOAIAAABAOAIAAABADYQAAACAFUNAAADABQQAAAEAIMLAAABAN8QAAABAN8QAAABAOAIAAABAOAI
+AAABAOAIAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAABAOAIAAAB
+AJUKAAABAJUKAAABAJUKAAACAEUGAAABAC4JAAABAE4FAAABAE4FAAABAE4FAAACAEUGAAABAC4J
+AAABAHASAAABAHASAAABAHASAAACAEUGAAABAC4JAAABAGEEAAABAGEEAAABAGEEAAACAEUGAAAB
+AC4JAAABAEUGAAABAGEKAAABAFkQAAACAPsDAAABALALAAACAOsIAAABALALAAACAOsIAAADAGUJ
+AAAEAFkQAAABAKgQAAABACgQAAACAP4KAAADAG0BAAAEAEUGAAABAFkQAAACAPsDAAABALALAAAC
+AOsIAAABALALAAACAOsIAAADAGUJAAAEAFkQAAABAKgQAAABACgQAAACAP4KAAADAG0BAAAEAEUG
+AAABAFkQAAACAPsDAAABALALAAACAOsIAAABALALAAACAOsIAAADAGUJAAAEAFkQAAABAKgQAAAB
+ACgQAAACAP4KAAADAG0BAAAEAEUGAAABAFkQAAACAPsDAAABALALAAACAOsIAAABALALAAACAOsI
+AAADAGUJAAAEAFkQAAABAKgQAAABACgQAAACAP4KAAADAG0BAAAEAEUGCQBIDQEAEQBIDQYAGQBI
+DQoAKQBIDRAAMQBIDRAAOQBIDRAAQQBIDRAASQBIDRAAUQBIDRAAWQBIDRAAYQBIDRAAaQBIDQYA
+wQBIDQYA4QBIDRUA6QBIDQYA8QBIDRsAAQFIDQYAEQFIDSEAGQFIDRAAIQFIDQYAKQFIDRAAMQFI
+DQYASQFIDRAAsQDJCAYAeQBIDQYAeQAcChAAiQAaDi4AsQDUCAYAcQA6DT0AgQDpEEIAiQCTBEYA
+iQCiEUwAmQEKBlAAgQCZEVUAkQACBgYAmQBIDVkAmQBuCmMAmQAJCgEAoQFIDRAAmQD0EQYAmQB1
+EAYAmQB4EFUAsQBIDQYAsQBJAG0AsQB/DnQAuQBIDQYAsQBVDnoAqQFlCoAAsQDfEYcAsQGwEY0A
+0QHwBJQA0QH7EZ0AyQBIDaMA6QFlCqsA+QBIDQYA6QHuA7AAOQFIDQYA8QFRCkwA8QG9D7kA8QFZ
+ChAA8QGjD1UA+QF9BccAAQKsBNMA+QHmCMcAOQHLBA8BQQFIDRcBOQHVAB0BYQEcEC4BiQEkDTMB
+iQFfAVUAiQE3BkIACQIPATkByQGEEkQByQF4EkcBaQFIDRAAaQESEU0BaQFjEUwAyQGrBVEBiQFI
+DVoBiQErEgYALgALAIoCLgATAJMCLgAbALICLgAjALsCLgArAOQCLgAzAOQCLgA7AOQCLgBDALsC
+LgBLAOoCLgBTAOQCLgBbAAEDQwBjAEsD4wBrAEsDAwF7AEsDAwGDAJ0KIwGDAPcKIwGjAEsDIwGr
+ABsLIwGzACULQwGDAPcKSQFzALICYwGDAPcKYwGjAEsDYwGrABsLaQFzALICgwGDAPcKowGDAPcK
+owGjAEsDowGrABsLqQGLAEsDqQFrAEsDqQGTAGQLqQGbAG0LwwGDAPcK4wGDAPcK4wGjAEsD4wGr
+ABsLAwKDAPcKIQJ7AEsDIwKDAPcKIwKjAEsDIwKrABsLQQJ7AEsDYQJ7AEsDgQJ7AEsDwAR7AEsD
+4AR7AEsDAAV7AEsDIAV7AEsDQAV7AEsDYAV7AEsDgAV7AEsDoAV7AEsDwAW7AFADQAa7ACUFwAa7
+AP0GQAe7AMsIKAA0AGkAvgDlAPMAAQEoAT4BCQABAAAAFAIoAAAAgAIwAAAAxgM4AAAArgFAAAMA
+AQAGAAkABwAKAAgADAAJAA4ACwAQAA0AEQAPABIAEQATAAAAaBJvAgAA+glzAgAAVAVvAgAAxwlz
+AgAAVQRvAgAAsAlzAgAAZBB3AgAA3glzAgAAZAVvAgAA7wt7AgAA0wWAAgAAiBCFAgAAHxFvAgAA
+XQpvAgAAwQ9zAgAAoRBvAgAAoRBvAgAAoRBvAgAAoRBvAggAJgACABAAJwACAAEABgADAAgAKAAE
+ABAAKQAEAAEABwAFAAgAKgAGABAAKwAGAAEACAAHAAgALAAIABAALQAIAAEACQAJAAEACgALAAEA
+CwANAAEADAAPAAEADQARAAIAGAATAAIAGgAVAAIAGwAXAAEAHAAXAAIAHQAZAAIAHgAbAAIAIgAd
+AAEAIwAdAAIAJAAfAAEAJQAfAAIARQAhAAIASwAjAAIAUQAlAAIAVwAnAASAAAABAAAAAAAAAAAA
+AAAAAF4AAAAEAAAAAAAAAAAAAABjAVUAAAAAAA4AAAAAAAAAAAAAAGwB9RAAAAAABAAAAAAAAAAA
+AAAAYwERCgAAAAAOAAAAAAAAAAAAAABsAWwRAAAAAAQAAAAAAAAAAAAAAGMBdwoAAAAABAAAAAAA
+AAAAAAAAdQFyDQAAAAAOAAAAAAAAAAAAAABsAY0LAAAAAAAAAAABAAAAtw0AAH8A4AB/AO4AfwD8
+AH8ACgEAAABJRFRTVmFyaWFibGUxMDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZhbHVhdG9yQ29u
+dGV4dDEwMABJbnQzMgA8TW9kdWxlPgBHZXRPdXRwdXRJRABtc2NvcmxpYgBTQ18wNGRmMDM4MDhl
+MDU0YTUwOWU0OWQ0Y2NlMDIyODEyYwBnZXRBaXJwb3J0SW5mb3JtYXRpb25CeUFpcnBvcnRDb2Rl
+QXN5bmMAZ2V0QWlycG9ydEluZm9ybWF0aW9uQnlJU09Db3VudHJ5Q29kZUFzeW5jAEludm9rZUFz
+eW5jAGdldEFpcnBvcnRJbmZvcm1hdGlvbkJ5Q2l0eU9yQWlycG9ydE5hbWVBc3luYwBDYW5jZWxB
+c3luYwBHZXRBaXJwb3J0SW5mb3JtYXRpb25CeUNvdW50cnlBc3luYwBNYXJrT3V0cHV0c0Zpbmlz
+aGVkAEludGVybG9ja2VkAGdldF9DYW5jZWxsZWQAY2FuY2VsbGVkAGFkZF9nZXRBaXJwb3J0SW5m
+b3JtYXRpb25CeUFpcnBvcnRDb2RlQ29tcGxldGVkAHJlbW92ZV9nZXRBaXJwb3J0SW5mb3JtYXRp
+b25CeUFpcnBvcnRDb2RlQ29tcGxldGVkAGFkZF9nZXRBaXJwb3J0SW5mb3JtYXRpb25CeUlTT0Nv
+dW50cnlDb2RlQ29tcGxldGVkAHJlbW92ZV9nZXRBaXJwb3J0SW5mb3JtYXRpb25CeUlTT0NvdW50
+cnlDb2RlQ29tcGxldGVkAGFkZF9nZXRBaXJwb3J0SW5mb3JtYXRpb25CeUNpdHlPckFpcnBvcnRO
+YW1lQ29tcGxldGVkAHJlbW92ZV9nZXRBaXJwb3J0SW5mb3JtYXRpb25CeUNpdHlPckFpcnBvcnRO
+YW1lQ29tcGxldGVkAE9uZ2V0QWlycG9ydEluZm9ybWF0aW9uQnlBaXJwb3J0Q29kZU9wZXJhdGlv
+bkNvbXBsZXRlZABPbmdldEFpcnBvcnRJbmZvcm1hdGlvbkJ5SVNPQ291bnRyeUNvZGVPcGVyYXRp
+b25Db21wbGV0ZWQAT25nZXRBaXJwb3J0SW5mb3JtYXRpb25CeUNpdHlPckFpcnBvcnROYW1lT3Bl
+cmF0aW9uQ29tcGxldGVkAE9uR2V0QWlycG9ydEluZm9ybWF0aW9uQnlDb3VudHJ5T3BlcmF0aW9u
+Q29tcGxldGVkAGFkZF9HZXRBaXJwb3J0SW5mb3JtYXRpb25CeUNvdW50cnlDb21wbGV0ZWQAcmVt
+b3ZlX0dldEFpcnBvcnRJbmZvcm1hdGlvbkJ5Q291bnRyeUNvbXBsZXRlZABTeW5jaHJvbml6ZWQA
+bWV0aG9kAElzTG9jYWxGaWxlU3lzdGVtV2ViU2VydmljZQBkZWZhdWx0SW5zdGFuY2UAc2V0X0Fp
+cnBvcnRDb2RlAGdldEFpcnBvcnRJbmZvcm1hdGlvbkJ5QWlycG9ydENvZGUAYWlycG9ydENvZGUA
+Z2V0QWlycG9ydEluZm9ybWF0aW9uQnlJU09Db3VudHJ5Q29kZQBTZWxlY3RTaW5nbGVOb2RlAFht
+bE5vZGUAQ29tcGFyZUV4Y2hhbmdlAEVuZEludm9rZQBCZWdpbkludm9rZQBJRGlzcG9zYWJsZQBS
+dW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBTb2FwUGFyYW1ldGVyU3R5bGUAc2V0
+X0FpcnBvcnROYW1lAGdldEFpcnBvcnRJbmZvcm1hdGlvbkJ5Q2l0eU9yQWlycG9ydE5hbWUAY2l0
+eU9yQWlycG9ydE5hbWUAZ2V0X0NvdW50cnlOYW1lAF9jb3VudHJ5TmFtZQBDb21iaW5lAE1pY3Jv
+c29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5cGUAQ29tcGFyZQBnZXRfQ3VsdHVyZQBzZXRf
+Q3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAU29hcEJpbmRpbmdVc2UAQXBwbGljYXRpb25TZXR0aW5n
+c0Jhc2UARGlzcG9zZQBQYXJzZQBNdWx0aWNhc3REZWxlZ2F0ZQBFZGl0b3JCcm93c2FibGVTdGF0
+ZQBnZXRfVXNlclN0YXRlAHVzZXJTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBTb2Fw
+RG9jdW1lbnRNZXRob2RBdHRyaWJ1dGUAR2VuZXJhdGVkQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dlck5v
+blVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0
+cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUARGVmYXVsdFNldHRpbmdWYWx1ZUF0dHJpYnV0
+ZQBXZWJTZXJ2aWNlQmluZGluZ0F0dHJpYnV0ZQBBcHBsaWNhdGlvblNjb3BlZFNldHRpbmdBdHRy
+aWJ1dGUAU3BlY2lhbFNldHRpbmdBdHRyaWJ1dGUARGVidWdnZXJTdGVwVGhyb3VnaEF0dHJpYnV0
+ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNz
+ZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUA
+Q29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUA
+QXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRB
+dHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAERlc2lnbmVyQ2F0ZWdvcnlBdHRyaWJ1
+dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2
+YWx1ZQBSZW1vdmUAU3lzdGVtLlRocmVhZGluZwBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFN0
+cmluZwBTcGVjaWFsU2V0dGluZwBhcmcAX2FpcnBvcnRYUGF0aABVcmkAQXN5bmNDYWxsYmFjawBT
+ZW5kT3JQb3N0Q2FsbGJhY2sAY2FsbGJhY2sAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDXzA0ZGYw
+MzgwOGUwNTRhNTA5ZTQ5ZDRjY2UwMjI4MTJjLmRsbABzZXRfQWlycG9ydENvZGVfSXNOdWxsAHNl
+dF9BaXJwb3J0TmFtZV9Jc051bGwAc2V0X1J1bndheUxlbmd0aEZlZXRfSXNOdWxsAHNldF9Db3Vu
+dHJ5X0lzTnVsbABTZXROdWxsAFN5c3RlbS5YbWwATG9hZFhtbABIdHRwV2ViQ2xpZW50UHJvdG9j
+b2wAU29hcEh0dHBDbGllbnRQcm90b2NvbABnZXRfVXJsAHNldF9VcmwAdXJsAGdldF9JdGVtAHNl
+dF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAENvdW50cnlBYmJydmlhdGlvbgBT
+eXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlv
+bgBJbnZhbGlkT3BlcmF0aW9uRXhjZXB0aW9uAGV4Y2VwdGlvbgBTeXN0ZW0uV2ViLlNlcnZpY2Vz
+LkRlc2NyaXB0aW9uAFN0cmluZ0NvbXBhcmlzb24AQ3VsdHVyZUluZm8AU0NfMDRkZjAzODA4ZTA1
+NGE1MDllNDlkNGNjZTAyMjgxMmMuQWlycG9ydEluZm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAA
+TWljcm9zb2Z0LlNxbFNlcnZlci5EVFNSdW50aW1lV3JhcABzZW5kZXIAUGlwZWxpbmVCdWZmZXIA
+U2NyaXB0QnVmZmVyAEFpcnBvcnRJbmZvT3V0cHV0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIA
+Z2V0QWlycG9ydEluZm9ybWF0aW9uQnlBaXJwb3J0Q29kZUNvbXBsZXRlZEV2ZW50SGFuZGxlcgBn
+ZXRBaXJwb3J0SW5mb3JtYXRpb25CeUlTT0NvdW50cnlDb2RlQ29tcGxldGVkRXZlbnRIYW5kbGVy
+AGdldEFpcnBvcnRJbmZvcm1hdGlvbkJ5Q2l0eU9yQWlycG9ydE5hbWVDb21wbGV0ZWRFdmVudEhh
+bmRsZXIAR2V0QWlycG9ydEluZm9ybWF0aW9uQnlDb3VudHJ5Q29tcGxldGVkRXZlbnRIYW5kbGVy
+AFN5c3RlbS5Db2RlRG9tLkNvbXBpbGVyAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUu
+V3JhcHBlcgBnZXRfRXJyb3IASUVudW1lcmF0b3IAR2V0RW51bWVyYXRvcgAuY3RvcgAuY2N0b3IA
+T3V0cHV0SURzAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uV2ViLlNlcnZpY2VzAFN5c3RlbS5S
+dW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ18wNGRmMDM4MDhlMDU0
+YTUwOWU0OWQ0Y2NlMDIyODEyYy5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdn
+aW5nTW9kZXMAX2FpcnBvcnRYbWxOb2RlcwBTZWxlY3ROb2RlcwBTQ18wNGRmMDM4MDhlMDU0YTUw
+OWU0OWQ0Y2NlMDIyODEyYy5Qcm9wZXJ0aWVzAGdldF9SZWFkT25seVZhcmlhYmxlcwBCdWZmZXJD
+b2x1bW5JbmRleGVzAEdldENvbHVtbkluZGV4ZXMAU2V0dGluZ3MAQXN5bmNDb21wbGV0ZWRFdmVu
+dEFyZ3MAZ2V0QWlycG9ydEluZm9ybWF0aW9uQnlBaXJwb3J0Q29kZUNvbXBsZXRlZEV2ZW50QXJn
+cwBnZXRBaXJwb3J0SW5mb3JtYXRpb25CeUlTT0NvdW50cnlDb2RlQ29tcGxldGVkRXZlbnRBcmdz
+AEludm9rZUNvbXBsZXRlZEV2ZW50QXJncwBnZXRBaXJwb3J0SW5mb3JtYXRpb25CeUNpdHlPckFp
+cnBvcnROYW1lQ29tcGxldGVkRXZlbnRBcmdzAEdldEFpcnBvcnRJbmZvcm1hdGlvbkJ5Q291bnRy
+eUNvbXBsZXRlZEV2ZW50QXJncwBnZXRfVXNlRGVmYXVsdENyZWRlbnRpYWxzAHNldF9Vc2VEZWZh
+dWx0Q3JlZGVudGlhbHMAU3lzdGVtLldlYi5TZXJ2aWNlcy5Qcm90b2NvbHMAU3lzdGVtLkNvbGxl
+Y3Rpb25zAENvbm5lY3Rpb25zAEJ1ZmZlcnMAZ2V0X1Jlc3VsdHMAcmVzdWx0cwBGaW5pc2hPdXRw
+dXRzAENyZWF0ZU5ld091dHB1dFJvd3MAT2JqZWN0AG9iamVjdABzZXRfUnVud2F5TGVuZ3RoRmVl
+dABTZXRFbmRPZlJvd3NldABnZXRfRGVmYXVsdABnZXRfUmVzdWx0AElBc3luY1Jlc3VsdAByZXN1
+bHQAWG1sRG9jdW1lbnQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9u
+ZW50AGdldF9DdXJyZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQAZ2V0X1BvcnQAZ2V0
+X1NDXzA0ZGYwMzgwOGUwNTRhNTA5ZTQ5ZDRjY2UwMjI4MTJjX0FpcnBvcnRJbmZvX2FpcnBvcnQA
+WG1sTm9kZUxpc3QAZ2V0X0hvc3QATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGluZUhvc3QAUHJp
+bWVPdXRwdXQATW92ZU5leHQAZ2V0X0lubmVyVGV4dABHZXRWYWx1ZVdpdGhDb250ZXh0AFNjcmlw
+dENvbXBvbmVudEV2YWxDb250ZXh0AGdldF9FdmFsdWF0b3JDb250ZXh0AEFkZFJvdwBnZXRfQXNz
+ZW1ibHkAdXNlRGVmYXVsdENyZWRlbnRpYWxzU2V0RXhwbGljaXRseQBSYWlzZUV4Y2VwdGlvbklm
+TmVjZXNzYXJ5AHNldF9Db3VudHJ5AEdldEFpcnBvcnRJbmZvcm1hdGlvbkJ5Q291bnRyeQBjb3Vu
+dHJ5AG9wX0VxdWFsaXR5AEVtcHR5AAAAACNDAGkAdAB5AE8AcgBBAGkAcgBwAG8AcgB0AE4AYQBt
+AGUAABdBAGkAcgBwAG8AcgB0AEMAbwBkAGUAACFSAHUAbgB3AGEAeQBMAGUAbgBnAHQAaABGAGUA
+ZQB0AAAjLwBOAGUAdwBEAGEAdABhAFMAZQB0AC8AVABhAGIAbABlAACAm0kAcwBOAHUAbABsACAA
+cAByAG8AcABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABiAGUAIABzAGUAdAAgAHQAbwAgAEYAYQBs
+AHMAZQAuACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwAdQBlACAAdABvACAAdABoAGUAIABjAG8A
+bAB1AG0AbgAgAGkAbgBzAHQAZQBhAGQALgAAI0EAaQByAHAAbwByAHQASQBuAGYAbwBPAHUAdABw
+AHUAdAAAF0MAbwB1AG4AdAByAHkATgBhAG0AZQAAcVMAQwBfADAANABkAGYAMAAzADgAMAA4AGUA
+MAA1ADQAYQA1ADAAOQBlADQAOQBkADQAYwBjAGUAMAAyADIAOAAxADIAYwAuAFAAcgBvAHAAZQBy
+AHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAb1MAQwBfADAANABkAGYAMAAzADgAMAA4AGUA
+MAA1ADQAYQA1ADAAOQBlADQAOQBkADQAYwBjAGUAMAAyADIAOAAxADIAYwBfAEEAaQByAHAAbwBy
+AHQASQBuAGYAbwBfAGEAaQByAHAAbwByAHQAAEtnAGUAdABBAGkAcgBwAG8AcgB0AEkAbgBmAG8A
+cgBtAGEAdABpAG8AbgBCAHkASQBTAE8AQwBvAHUAbgB0AHIAeQBDAG8AZABlAABRZwBlAHQAQQBp
+AHIAcABvAHIAdABJAG4AZgBvAHIAbQBhAHQAaQBvAG4AQgB5AEMAaQB0AHkATwByAEEAaQByAHAA
+bwByAHQATgBhAG0AZQAAPUcAZQB0AEEAaQByAHAAbwByAHQASQBuAGYAbwByAG0AYQB0AGkAbwBu
+AEIAeQBDAG8AdQBuAHQAcgB5AABFZwBlAHQAQQBpAHIAcABvAHIAdABJAG4AZgBvAHIAbQBhAHQA
+aQBvAG4AQgB5AEEAaQByAHAAbwByAHQAQwBvAGQAZQAAE2wAbwBjAGEAbABIAG8AcwB0AAD8FABP
+3BoQQYfLYTGP+RYiAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFtBSACAQ4OBiABARGAhQUHAg4S
+PQUgARI5DggHAxJBEkUSSQQgABJBAyAAHAUgARJFDgMgAA4EAAEIDgMgAAIJIAMBElEdCBJVBSAC
+AQgcAwcBCAYAAggSVQ4FIAEdCAgFIAASgNUGIAESgNkcBQAAEoDdBiABHBKA4QgAARKA6RGA7QUg
+ABKA8QcgAgEOEoDxBCABHA4IAAESgPUSgPUEIAEBAggHAxIoEigSKAsAAhKA/RKA/RKA/QwQAQMe
+ABAeAB4AHgAECgESKAgHAxIwEjASMAQKARIwCAcDEjgSOBI4BAoBEjgIBwMSQBJAEkAECgESQAcg
+Ah0cDh0cBSACARwYCiAEAQ4dHBKAoRwFBwESgLEEIAAdHAUgABKAyQQgAQEcBQcBEoC1AgYOBQAC
+Ag4OAyAACAgAAwgODhGBCQggAwESgMkCHAi3elxWGTTgiQiJhF3NgIDMkQiwP19/EdUKOgMGEjkD
+BhIUAwYSGAMGEgwDBhJZAwYSZQMGEmkDBhIgBAYSgKECBgIDBhIoAwYSMAMGEjgDBhJAAwYdHAsg
+BAEIHQgdElESVQUgAQESWQQAABJlBAAAEmkFAAEBEmkEAAASIAMAAAEFIAEBEigFIAEBEjAFIAEB
+EjgFIAEBEkAEIAEODgUgAgEOHAQgAQIOBiACARwSLAwgBBKAvRwSLBKAwRwGIAEBEoC9CiAEAR0c
+EoDJAhwGIAIBHBI0DCAEEoC9HBI0EoDBHAYgAgEcEjwMIAQSgL0cEjwSgMEcBiACARwSRAwgBBKA
+vRwSRBKAwRwDKAAOAygAAgMoAAgECAASZQQIABJpBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBO
+b25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzA0ZGYwMzgwOGUwNTRhNTA5ZTQ5ZDRj
+Y2UwMjI4MTJjAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMTcAAEkBABouTkVURnJhbWV3b3Jr
+LFZlcnNpb249djQuNQEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41
+BAEAAACB0wEAQGh0dHA6Ly93d3cud2Vic2VydmljZVguTkVUL2dldEFpcnBvcnRJbmZvcm1hdGlv
+bkJ5SVNPQ291bnRyeUNvZGUEAFQOEFJlcXVlc3ROYW1lc3BhY2UaaHR0cDovL3d3dy53ZWJzZXJ2
+aWNlWC5ORVRUDhFSZXNwb25zZU5hbWVzcGFjZRpodHRwOi8vd3d3LndlYnNlcnZpY2VYLk5FVFRV
+gIZTeXN0ZW0uV2ViLlNlcnZpY2VzLkRlc2NyaXB0aW9uLlNvYXBCaW5kaW5nVXNlLCBTeXN0ZW0u
+V2ViLlNlcnZpY2VzLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5
+VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQNVc2UCAAAAVFWAiFN5c3RlbS5XZWIuU2VydmljZXMuUHJv
+dG9jb2xzLlNvYXBQYXJhbWV0ZXJTdHlsZSwgU3lzdGVtLldlYi5TZXJ2aWNlcywgVmVyc2lvbj00
+LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EO
+UGFyYW1ldGVyU3R5bGUCAAAAgdYBAENodHRwOi8vd3d3LndlYnNlcnZpY2VYLk5FVC9nZXRBaXJw
+b3J0SW5mb3JtYXRpb25CeUNpdHlPckFpcnBvcnROYW1lBABUDhBSZXF1ZXN0TmFtZXNwYWNlGmh0
+dHA6Ly93d3cud2Vic2VydmljZVguTkVUVA4RUmVzcG9uc2VOYW1lc3BhY2UaaHR0cDovL3d3dy53
+ZWJzZXJ2aWNlWC5ORVRUVYCGU3lzdGVtLldlYi5TZXJ2aWNlcy5EZXNjcmlwdGlvbi5Tb2FwQmlu
+ZGluZ1VzZSwgU3lzdGVtLldlYi5TZXJ2aWNlcywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5l
+dXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EDVXNlAgAAAFRVgIhTeXN0ZW0u
+V2ViLlNlcnZpY2VzLlByb3RvY29scy5Tb2FwUGFyYW1ldGVyU3R5bGUsIFN5c3RlbS5XZWIuU2Vy
+dmljZXMsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1i
+MDNmNWY3ZjExZDUwYTNhDlBhcmFtZXRlclN0eWxlAgAAAIHMAQA5aHR0cDovL3d3dy53ZWJzZXJ2
+aWNlWC5ORVQvR2V0QWlycG9ydEluZm9ybWF0aW9uQnlDb3VudHJ5BABUDhBSZXF1ZXN0TmFtZXNw
+YWNlGmh0dHA6Ly93d3cud2Vic2VydmljZVguTkVUVA4RUmVzcG9uc2VOYW1lc3BhY2UaaHR0cDov
+L3d3dy53ZWJzZXJ2aWNlWC5ORVRUVYCGU3lzdGVtLldlYi5TZXJ2aWNlcy5EZXNjcmlwdGlvbi5T
+b2FwQmluZGluZ1VzZSwgU3lzdGVtLldlYi5TZXJ2aWNlcywgVmVyc2lvbj00LjAuMC4wLCBDdWx0
+dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EDVXNlAgAAAFRVgIhT
+eXN0ZW0uV2ViLlNlcnZpY2VzLlByb3RvY29scy5Tb2FwUGFyYW1ldGVyU3R5bGUsIFN5c3RlbS5X
+ZWIuU2VydmljZXMsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlU
+b2tlbj1iMDNmNWY3ZjExZDUwYTNhDlBhcmFtZXRlclN0eWxlAgAAAIHQAQA9aHR0cDovL3d3dy53
+ZWJzZXJ2aWNlWC5ORVQvZ2V0QWlycG9ydEluZm9ybWF0aW9uQnlBaXJwb3J0Q29kZQQAVA4QUmVx
+dWVzdE5hbWVzcGFjZRpodHRwOi8vd3d3LndlYnNlcnZpY2VYLk5FVFQOEVJlc3BvbnNlTmFtZXNw
+YWNlGmh0dHA6Ly93d3cud2Vic2VydmljZVguTkVUVFWAhlN5c3RlbS5XZWIuU2VydmljZXMuRGVz
+Y3JpcHRpb24uU29hcEJpbmRpbmdVc2UsIFN5c3RlbS5XZWIuU2VydmljZXMsIFZlcnNpb249NC4w
+LjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhA1Vz
+ZQIAAABUVYCIU3lzdGVtLldlYi5TZXJ2aWNlcy5Qcm90b2NvbHMuU29hcFBhcmFtZXRlclN0eWxl
+LCBTeXN0ZW0uV2ViLlNlcnZpY2VzLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
+UHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQ5QYXJhbWV0ZXJTdHlsZQIAAABZAQBLTWlj
+cm9zb2Z0LlZpc3VhbFN0dWRpby5FZGl0b3JzLlNldHRpbmdzRGVzaWduZXIuU2V0dGluZ3NTaW5n
+bGVGaWxlR2VuZXJhdG9yCDE0LjAuMC4wAAAjAQATU3lzdGVtLldlYi5TZXJ2aWNlcwo0LjYuMTU4
+Ni4wAAAJAQAEY29kZQAAPgEAAgBUDgROYW1lC2FpcnBvcnRTb2FwVA4JTmFtZXNwYWNlGmh0dHA6
+Ly93d3cud2Vic2VydmljZVguTkVUCAEAAQAAAAAALAEAJ2h0dHA6Ly93d3cud2Vic2VydmljZXgu
+bmV0L2FpcnBvcnQuYXNteAAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVz
+b3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwg
+UHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVS
+ZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAaFwAAAAAAAAAAAAAglwAAAAgAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAHRcAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAA
+AP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAAGAAAgAAAAAAAAAAA
+AAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhgAADsAwAAAAAAAAAAAADs
+AzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAAAQAAAAEAAAAAAAAA
+AQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQByAEYAaQBsAGUASQBu
+AGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAETAMAAAEAUwB0AHIA
+aQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAAMAAwADQAYgAwAAAAGgABAAEAQwBv
+AG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkATgBhAG0AZQAAAAAAAAAAAHAA
+JAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAEMAXwAwADQAZABmADAAMwA4
+ADAAOABlADAANQA0AGEANQAwADkAZQA0ADkAZAA0AGMAYwBlADAAMgAyADgAMQAyAGMAAAAwAAgA
+AQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AMAAuADAAAABwACgAAQBJAG4AdABl
+AHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADAANABkAGYAMAAzADgAMAA4AGUAMAA1ADQAYQA1ADAA
+OQBlADQAOQBkADQAYwBjAGUAMAAyADIAOAAxADIAYwAuAGQAbABsAAAASAASAAEATABlAGcAYQBs
+AEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQAIABAACAAIAAyADAAMQA3AAAA
+KgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAAAAAAAAB4ACgAAQBPAHIAaQBn
+AGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AMAA0AGQAZgAwADMAOAAwADgAZQAwADUA
+NABhADUAMAA5AGUANAA5AGQANABjAGMAZQAwADIAMgA4ADEAMgBjAC4AZABsAGwAAABoACQAAQBQ
+AHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADAANABkAGYAMAAzADgAMAA4AGUAMAA1ADQA
+YQA1ADAAOQBlADQAOQBkADQAYwBjAGUAMAAyADIAOAAxADIAYwAAADQACAABAFAAcgBvAGQAdQBj
+AHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgAAQBBAHMAcwBlAG0AYgBsAHkA
+IABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAMAAAAlDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_04df03808e054a509e49d4cce022812c</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">$Package::CountryName</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">83</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput]"
+                  hasSideEffects="true"
+                  name="AirportInfoOutput">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[Country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[AirportName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[AirportName]"
+                      name="AirportName" />
+                    <outputColumn
+                      refId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[AirportCode]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[AirportCode]"
+                      name="AirportCode" />
+                    <outputColumn
+                      refId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[RunwayLengthFeet]"
+                      dataType="i4"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[RunwayLengthFeet]"
+                      name="RunwayLengthFeet" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Airport Information\JSON File"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;11"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="JSON File"
+              version="11">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+using System.Web.Script.Serialization;
+using System.Collections.Generic;
+using System.IO;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    private const Int32 JSON_MAX_ITEM_COUNT = 50;
+
+    private String _jsonFilePath;
+    private String _jsonFileNameFormat;
+    private Int32 _fileCounter = 0;
+
+    private JavaScriptSerializer _jsonSerializer = new JavaScriptSerializer();
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+
+        _jsonFilePath = Variables.JSONFilePath;
+        _jsonFileNameFormat = Variables.JSONFileNameFormat;
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+    }
+
+    public override void JSONFileInput_ProcessInput(JSONFileInputBuffer Buffer)
+    {
+        List<AirportInfo> airportInfo = new List<AirportInfo>();
+
+        Int32 index = 0;
+        while (Buffer.NextRow())
+        {
+            airportInfo.Add
+                (
+                new AirportInfo
+                    (
+                    Buffer.Country,
+                    Buffer.AirportName,
+                    Buffer.AirportCode,
+                    Buffer.RunwayLengthFeet
+                    )
+                );
+            index++;
+            if (index % JSON_MAX_ITEM_COUNT == 0)
+            {
+                _fileCounter++;
+                this.WriteJSONFile(airportInfo, _fileCounter);
+                airportInfo.Clear();
+            }
+        }
+        if (airportInfo.Count > 0)
+        {
+            _fileCounter++;
+            this.WriteJSONFile(airportInfo, _fileCounter);
+            airportInfo.Clear();
+        }
+    }
+
+    private void WriteJSONFile(List<AirportInfo> airportInfo, Int32 fileCount)
+    {
+        String airportInfoJSON = _jsonSerializer.Serialize(airportInfo);
+
+        String jsonFileName = Path.Combine(_jsonFilePath, String.Format(_jsonFileNameFormat, fileCount));
+
+        using (StreamWriter jsonStreamWriter = new StreamWriter(jsonFileName))
+        {
+            jsonStreamWriter.Write(airportInfoJSON);
+            jsonStreamWriter.Flush();
+        }
+    }
+
+    public class AirportInfo
+    {
+        public String CountryName { get; set; }
+        public String AirportName { get; set; }
+        public String AirportCode { get; set; }
+        public Int32 RunwayLengthFeet { get; set; }
+
+        public AirportInfo()
+        {
+        }
+
+        public AirportInfo(String countryName, String airportName, String airportCode, Int32 runwayLengthFeet)
+        {
+            this.CountryName = countryName;
+            this.AirportName = airportName;
+            this.AirportCode = airportCode;
+            this.RunwayLengthFeet = runwayLengthFeet;
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_a6cf7e481a7b404a955204cc31b9122e.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F1F51AC-DF8A-4F7A-8E65-F3A99B4A5F61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_a6cf7e481a7b404a955204cc31b9122e</RootNamespace>
+    <AssemblyName>SC_a6cf7e481a7b404a955204cc31b9122e</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC130</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class JSONFileInputBuffer: ScriptBuffer
+
+{
+    public JSONFileInputBuffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String Country
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[0]);
+        }
+    }
+    public bool Country_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public String AirportName
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[1]);
+        }
+    }
+    public bool AirportName_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public String AirportCode
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[2]);
+        }
+    }
+    public bool AirportCode_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public Int32 RunwayLengthFeet
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[3]);
+        }
+    }
+    public bool RunwayLengthFeet_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a6cf7e481a7b404a955204cc31b9122e.Properties.Settings.get_Default():SC_a6cf7e481a7b404a955204cc31b9122e.Properties.Sett" +
+    "ings")]
+
+namespace SC_a6cf7e481a7b404a955204cc31b9122e.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"JSONFileInput", StringComparison.Ordinal))
+        {
+            JSONFileInput_ProcessInput(new JSONFileInputBuffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void JSONFileInput_ProcessInput(JSONFileInputBuffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            JSONFileInput_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void JSONFileInput_ProcessInputRow(JSONFileInputBuffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+    public String JSONFileNameFormat
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["JSONFileNameFormat"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+    public String JSONFilePath
+    {
+        get
+        {
+            return (String)(ParentComponent.ReadOnlyVariables["JSONFilePath"].GetValueWithContext(ScriptComponent.EvaluatorContext));
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+	<msb:PropertyGroup>
+		<msb:CodeName>SC_a6cf7e481a7b404a955204cc31b9122e</msb:CodeName>
+		<msb:Language>msBuild</msb:Language>
+		<msb:DisplayName>SC_a6cf7e481a7b404a955204cc31b9122e</msb:DisplayName>
+		<msb:ProjectId>{FEB74ACE-9D68-4D7D-B34C-7797FEDE1B88}</msb:ProjectId>
+	</msb:PropertyGroup>
+	<msb:ItemGroup>
+		<msb:Project Include="SC_a6cf7e481a7b404a955204cc31b9122e.csproj"/>
+		<msb:File Include="Properties\Settings.Designer.cs"/>
+		<msb:File Include="BufferWrapper.cs"/>
+		<msb:File Include="main.cs"/>
+		<msb:File Include="ComponentWrapper.cs"/>
+		<msb:File Include="Properties\Settings.settings"/>
+		<msb:File Include="Properties\AssemblyInfo.cs"/>
+		<msb:File Include="Properties\Resources.resx"/>
+		<msb:File Include="Properties\Resources.Designer.cs"/>
+	</msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_a6cf7e481a7b404a955204cc31b9122e")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_a6cf7e481a7b404a955204cc31b9122e")]
+[assembly: AssemblyCopyright("Copyright @  2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a6cf7e481a7b404a955204cc31b9122e.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a6cf7e481a7b404a955204cc31b9122e.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_a6cf7e481a7b404a955204cc31b9122e.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_a6cf7e481a7b404a955204cc31b9122e.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_a6cf7e481a7b404a955204cc31b9122e.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_a6cf7e481a7b404a955204cc31b9122e.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[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
+/wgAAAEAdgYAAAIA6wcAAAMAGgYAAAEAUwAAAAIA5AEAAAMAdgYAAAQAGgYAAAEAdgYAAAEAyAkA
+AAEA6wgAAAEA6wgAAAEAYAQAAAEAYAQAAAEAYAQAAAEAYAQAAAEAYAQAAAEADgIAAAIA2AEAAAMA
+bgEAAAQAnggJAAMHAQARAAMHBgAZAAMHCgApAAMHEAAxAAMHEAA5AAMHEABBAAMHEABJAAMHEABR
+AAMHEABZAAMHEABhAAMHEABpAAMHBgCRAAMHBgC5AAMHBgDZAAMHFQCxAEkEBgCxAFQEBgAMAAMH
+BgAMAJ0ALAAMAEcGBgAMAPUIMgBxAGYEPADxAGYIQQD5ABoCRwCBAAMHEAABAaUCEAABAZQEBgAJ
+AYgCBgBxAAMHBgCZAAMHTQCZAHYGVwCZAOsHWwChAIoEXwCZAE0FZAChAEEAaQCZAMQJbgCZAK8I
+bgCxAAMHBgDxABkIcgCxAP8HegCJAAMHBgCxANUHgAAZAVQFhgCxAJEJjQAhAWIJkwA5AZgBmgA5
+AcwJowDBAAMHqQDhAAMHBgAIAAQAzAAuAAsAVAEuABMAXQEuABsAfAEuACMAhQEuACsArgEuADMA
+rgEuADsArgEuAEMAhQEuAEsAtAEuAFMArgEuAFsAywFDAGMAFQLjAHMAFQJpAXsAfAGBAWsAFQKJ
+AXsAfAGhAWsAFQLBAWsAFQLhAWsAFQIBAmsAFQIABGsAFQIgBGsAFQJABGsAFQJgBGsAFQKABGsA
+FQKgBGsAFQLABGsAFQLgBGsAFQIbADYAAwABAAYACQAHAAsACAANAAkADgAAAN0JOQEAAEUFPQEA
+AMwBOQEAABIFPQEAAGIBOQEAAPsEPQEAAI0IQQEAACkFPQEAAEYIOQEAAJ4EOQEAAIEGRQEAAGgC
+SgEAAL8ITwEAAAICOQEAAMwBOQEAAGIBOQEAAI0IQQECAAcAAwACAAgABQACAAkABwACAAoACQAC
+AAsACwACAAwADQACAA0ADwACAA4AEQACABcAEwACABgAFQACABoAFwACABsAGQABABwAGQACAB0A
+GwACACAAHQABACEAHQACACIAHwABACMAHwACACQAIQABACUAIQACACYAIwABACcAIwAlAASAAAAB
+AAAAAAAAAAAAAAAAABoBAAAEAAAAAAAAAAAAAACxAHkAAAAAAA4AAAAAAAAAAAAAALoACQkAAAAA
+BAAAAAAAAAAAAAAAwwAgCAAAAAAOAAAAAAAAAAAAAAC6ACYJAAAAAAQAAAAAAAAAAAAAALEAXQUA
+AAAADgAAAAAAAAAAAAAAugAkBgAAAAAAAAAAAQAAAFQHAAAJAAIAAAAAAABJRFRTVmFyaWFibGUx
+MDAASURUU1ZhcmlhYmxlczEwMABJRFRTRXZhbHVhdG9yQ29udGV4dDEwMABMaXN0YDEAR2V0SW50
+MzIAPE1vZHVsZT4ASW5wdXRJRABTeXN0ZW0uSU8ASlNPTl9NQVhfSVRFTV9DT1VOVABtc2Nvcmxp
+YgBTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYwBBZGQAPEFpcnBvcnRDb2RlPmtfX0JhY2tpbmdG
+aWVsZAA8QWlycG9ydE5hbWU+a19fQmFja2luZ0ZpZWxkADxDb3VudHJ5TmFtZT5rX19CYWNraW5n
+RmllbGQAPFJ1bndheUxlbmd0aEZlZXQ+a19fQmFja2luZ0ZpZWxkAFNDX2E2Y2Y3ZTQ4MWE3YjQw
+NGE5NTUyMDRjYzMxYjkxMjJlAGRlZmF1bHRJbnN0YW5jZQBnZXRfQWlycG9ydENvZGUAc2V0X0Fp
+cnBvcnRDb2RlAGFpcnBvcnRDb2RlAElEaXNwb3NhYmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5
+cGVGcm9tSGFuZGxlAFdyaXRlSlNPTkZpbGUAZ2V0X0FpcnBvcnROYW1lAHNldF9BaXJwb3J0TmFt
+ZQBhaXJwb3J0TmFtZQBJbnB1dE5hbWUAZ2V0X0NvdW50cnlOYW1lAHNldF9Db3VudHJ5TmFtZQBj
+b3VudHJ5TmFtZQBDb21iaW5lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5cGUA
+Z2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGlu
+Z3NCYXNlAERpc3Bvc2UARWRpdG9yQnJvd3NhYmxlU3RhdGUAV3JpdGUAQ29tcGlsZXJHZW5lcmF0
+ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmli
+dXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2Vt
+Ymx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNv
+bmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxh
+dGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJs
+eUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQb2ludEF0dHJpYnV0
+ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUA
+UHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBTZXJpYWxpemUAU3lzdGVtLlJ1bnRpbWUuVmVy
+c2lvbmluZwBHZXRTdHJpbmcARmx1c2gAZ2V0X0pTT05GaWxlUGF0aABfanNvbkZpbGVQYXRoAFN5
+c3RlbS5Db21wb25lbnRNb2RlbABTQ19hNmNmN2U0ODFhN2I0MDRhOTU1MjA0Y2MzMWI5MTIyZS5k
+bGwAZ2V0X0FpcnBvcnRDb2RlX0lzTnVsbABnZXRfQWlycG9ydE5hbWVfSXNOdWxsAGdldF9SdW53
+YXlMZW5ndGhGZWV0X0lzTnVsbABnZXRfQ291bnRyeV9Jc051bGwAZ2V0X0l0ZW0AU3lzdGVtAHJl
+c291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6
+YXRpb24AU3lzdGVtLldlYi5TY3JpcHQuU2VyaWFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBT
+dHJpbmdDb21wYXJpc29uAEN1bHR1cmVJbmZvAEFpcnBvcnRJbmZvAGFpcnBvcnRJbmZvAE91dHB1
+dE5hbWVNYXAAT3V0cHV0TWFwAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRFRTUnVudGltZVdyYXAAQ2xl
+YXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAEpTT05GaWxlSW5wdXRCdWZmZXIAZ2V0X1Jl
+c291cmNlTWFuYWdlcgBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lLldyYXBwZXIAU3Ry
+ZWFtV3JpdGVyAFRleHRXcml0ZXIAX2ZpbGVDb3VudGVyAF9qc29uU2VyaWFsaXplcgBKYXZhU2Ny
+aXB0U2VyaWFsaXplcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50
+aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ19hNmNmN2U0ODFhN2I0MDRh
+OTU1MjA0Y2MzMWI5MTIyZS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5n
+TW9kZXMAU0NfYTZjZjdlNDgxYTdiNDA0YTk1NTIwNGNjMzFiOTEyMmUuUHJvcGVydGllcwBnZXRf
+UmVhZE9ubHlWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNl
+dHRpbmdzAEVxdWFscwBTeXN0ZW0uV2ViLkV4dGVuc2lvbnMAQ29ubmVjdGlvbnMAZ2V0X0pTT05G
+aWxlTmFtZUZvcm1hdABfanNvbkZpbGVOYW1lRm9ybWF0AE9iamVjdABnZXRfUnVud2F5TGVuZ3Ro
+RmVldABzZXRfUnVud2F5TGVuZ3RoRmVldABydW53YXlMZW5ndGhGZWV0AEVuZE9mUm93c2V0AGdl
+dF9EZWZhdWx0AFVzZXJDb21wb25lbnQAUGFyZW50Q29tcG9uZW50AFNjcmlwdENvbXBvbmVudABn
+ZXRfQ291bnQAZmlsZUNvdW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0
+LlNxbFNlcnZlci5QaXBlbGluZUhvc3QASlNPTkZpbGVJbnB1dF9Qcm9jZXNzSW5wdXQAR2V0VmFs
+dWVXaXRoQ29udGV4dABTY3JpcHRDb21wb25lbnRFdmFsQ29udGV4dABnZXRfRXZhbHVhdG9yQ29u
+dGV4dABKU09ORmlsZUlucHV0X1Byb2Nlc3NJbnB1dFJvdwBOZXh0Um93AGdldF9Bc3NlbWJseQBn
+ZXRfQ291bnRyeQAAAAAAG0oAUwBPAE4ARgBpAGwAZQBJAG4AcAB1AHQAACVKAFMATwBOAEYAaQBs
+AGUATgBhAG0AZQBGAG8AcgBtAGEAdAAAGUoAUwBPAE4ARgBpAGwAZQBQAGEAdABoAABxUwBDAF8A
+YQA2AGMAZgA3AGUANAA4ADEAYQA3AGIANAAwADQAYQA5ADUANQAyADAANABjAGMAMwAxAGIAOQAx
+ADIAMgBlAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAAg5daeCPs
+/U6NCkMUlBLDqAAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERaQkHAhUSPQESJAgGFRI9ARIkBSAB
+ARMAAyAACAUHAg4SQQQgAQ4cBQACDg4cBQACDg4OCSADARJRHQgSVQMGElEDBh0IBCABDggEIAEC
+CAQgAQgIAyAAAgcgAgIOEYCJBSABHQgIBSAAEoCNBiABEoCRHAUAABKAlQYgARwSgJkIAAESgJ0R
+gKEFIAASgKUHIAIBDhKApQi3elxWGTTgiQiJhF3NgIDMkQgxvzhWrTZONQQyAAAAAgYIAgYOAwYS
+OQMGEhQDBhIYAwYSWQMGEmEDBhJlAwYSIAUgAQESDAogAgEVEj0BEiQIAyAADgkgBAEIDhJRElUF
+IAEBElkEAAASYQQAABJlBQABARJlBAAAEiADAAABByAEAQ4ODggDKAAOAygAAgMoAAgECAASYQQI
+ABJlBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAA
+KAEAI1NDX2E2Y2Y3ZTQ4MWE3YjQwNGE5NTUyMDRjYzMxYjkxMjJlAAAFAQAAAAAWAQARQ29weXJp
+Z2h0IEAgIDIwMTcAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNQEAVA4URnJhbWV3b3Jr
+RGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC41BAEAAAAAALQAAADOyu++AQAAAJEAAABsU3lz
+dGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwg
+Q3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5S
+ZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAABoOgAAAAAA
+AAAAAACCOgAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdDoAAAAAAAAAAAAAAABfQ29yRGxsTWFp
+bgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB
+ABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAA
+WEAAAOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9
+BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEA
+VgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAA
+AAAAsARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAA
+NABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBO
+AGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMA
+QwBfAGEANgBjAGYANwBlADQAOAAxAGEANwBiADQAMAA0AGEAOQA1ADUAMgAwADQAYwBjADMAMQBi
+ADkAMQAyADIAZQAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4A
+MAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AYQA2AGMAZgA3AGUANAA4
+ADEAYQA3AGIANAAwADQAYQA5ADUANQAyADAANABjAGMAMwAxAGIAOQAxADIAMgBlAC4AZABsAGwA
+AABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAg
+AEAAIAAgADIAMAAxADcAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAA
+AAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwBhADYAYwBm
+ADcAZQA0ADgAMQBhADcAYgA0ADAANABhADkANQA1ADIAMAA0AGMAYwAzADEAYgA5ADEAMgAyAGUA
+LgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AYQA2AGMAZgA3
+AGUANAA4ADEAYQA3AGIANAAwADQAYQA5ADUANQAyADAANABjAGMAMwAxAGIAOQAxADIAMgBlAAAA
+NAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAAB
+AEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAACUOgAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_a6cf7e481a7b404a955204cc31b9122e</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg">$Package::JSONFileNameFormat,$Package::JSONFilePath</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">B4</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Airport Information\JSON File.Inputs[JSONFileInput]"
+                  hasSideEffects="true"
+                  name="JSONFileInput">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Airport Information\JSON File.Inputs[JSONFileInput].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Country"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Airport Information\JSON File.Inputs[JSONFileInput].Columns[AirportName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="AirportName"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[AirportName]" />
+                    <inputColumn
+                      refId="Package\Airport Information\JSON File.Inputs[JSONFileInput].Columns[AirportCode]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="AirportCode"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[AirportCode]" />
+                    <inputColumn
+                      refId="Package\Airport Information\JSON File.Inputs[JSONFileInput].Columns[RunwayLengthFeet]"
+                      cachedDataType="i4"
+                      cachedName="RunwayLengthFeet"
+                      lineageId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput].Columns[RunwayLengthFeet]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Airport Information\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Airport Information\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Airport Information\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Airport Information\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Airport Information\Multicast.Outputs[Multicast Output 2]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Airport Information\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Airport Information.Paths[AirportInfoOutput]"
+              endId="Package\Airport Information\Multicast.Inputs[Multicast Input 1]"
+              name="AirportInfoOutput"
+              startId="Package\Airport Information\Airport Info by Country.Outputs[AirportInfoOutput]" />
+            <path
+              refId="Package\Airport Information.Paths[Multicast Output 1]"
+              endId="Package\Airport Information\JSON File.Inputs[JSONFileInput]"
+              name="Multicast Output 1"
+              startId="Package\Airport Information\Multicast.Outputs[Multicast Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Airport Information"
+          TopLeft="320,68" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Airport Information">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Airport Information\Airport Info by Country"
+          TopLeft="248.5,122.5" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Airport Information\Multicast"
+          TopLeft="282.5,224.5" />
+        <EdgeLayout
+          Id="Package\Airport Information.Paths[AirportInfoOutput]"
+          TopLeft="342.5,164.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,18.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Airport Information\JSON File"
+          TopLeft="281,326.5" />
+        <EdgeLayout
+          Id="Package\Airport Information.Paths[Multicast Output 1]"
+          TopLeft="342.5,266.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

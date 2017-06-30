@@ -1,0 +1,160 @@
+/************************************************/
+/* SSIS 2016 Cookbook Chapter 07 VB and C# Code */
+/************************************************/
+
+
+/*************************************************/
+/* Recipe 1: Using variables in SSIS Script task */
+/*************************************************/
+
+-- VariableDispenser task
+Dim vars As Variables = Nothing
+Dts.VariableDispenser.LockForRead("intCounter")
+Dts.VariableDispenser.GetVariables(vars)
+        MsgBox("Iteration: " & CStr(vars(0).Value))
+
+
+-- ReadOnlyVariables task
+MsgBox("File name: " & CStr(Dts.Variables("strFile").Value))
+
+
+/*********************************************************************/
+/* Recipe 2: Execute complex file system operations with Script task */
+/*********************************************************************/
+
+-- Namespaces
+using System.IO;
+using System.Collections;
+
+-- Constants and variables before Main method of the FilesBySize Script task
+private const string FILE_PATH = "C:\\SSIS2016Cookbook";
+private const string FILE_FILTER = "Ch07*.txt";
+long fileSizeLimit;
+private ArrayList listForEnumerator;
+
+-- The Main method of the FilesBySize Script task
+        public void Main()
+        {
+            // TODO: Add your code here
+
+            fileSizeLimit = (long)(Dts.Variables["intSize"].Value);
+
+            string[] localFiles;
+            long fileSize;
+            ArrayList listForEnumerator = new ArrayList();
+
+            localFiles = Directory.GetFiles(FILE_PATH, FILE_FILTER);
+
+            foreach (string localFile in localFiles)
+            {
+                FileInfo fi = new FileInfo(localFile);
+                fileSize = fi.Length;
+                if (fileSize >= fileSizeLimit)
+                {
+                    listForEnumerator.Add(localFile);
+                }
+            }
+ 
+            MessageBox.Show("Matching files: " + listForEnumerator.Count, "Results",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Dts.Variables["objList"].Value = listForEnumerator;
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+        }
+
+-- The added line of code to the Main method of the ShowFileNames Script task
+MessageBox.Show(Dts.Variables["objList"].Value.ToString());
+
+
+/*****************************************************************/
+/* Recipe 3: Reading data profiling XML results with Script task */
+/*****************************************************************/
+
+-- Namespace for the ReadPatterns Script task
+using System.Xml;
+
+-- Variable definitions
+        private string fileName = @"C:\SSIS2016Cookbook\DataProfiling.xml";
+        private string profileNamespaceUri = "http://schemas.microsoft.com/sqlserver/2008/DataDebugger/";
+        private string erx1Path = "/default:DataProfile/default:DataProfileOutput/default:Profiles" +
+        "/default:ColumnPatternProfile[default:Column[@Name='EmailAddress']]" +
+        "/default:TopRegexPatterns/default:PatternDistributionItem[1]/default:RegexText/text()";
+        private string erx2Path = "/default:DataProfile/default:DataProfileOutput/default:Profiles" +
+        "/default:ColumnPatternProfile[default:Column[@Name='EmailAddress']]" +
+        "/default:TopRegexPatterns/default:PatternDistributionItem[2]/default:RegexText/text()";
+
+-- The Main method of the ReadPattern Script task
+        public void Main()
+	{
+            // TODO: Add your code here
+            // Local variables
+            string profilePath;
+            XmlDocument profileOutput = new XmlDocument();
+            XmlNamespaceManager profileNSM;
+            XmlNode regExNode1;
+            XmlNode regExNode2;
+
+            // Open output file
+            profilePath = fileName;
+            profileOutput.Load(profilePath);
+            profileNSM = new XmlNamespaceManager(profileOutput.NameTable);
+            profileNSM.AddNamespace("default", profileNamespaceUri);
+
+            // Get regExNodes
+            regExNode1 = profileOutput.SelectSingleNode(erx1Path, profileNSM);
+            regExNode2 = profileOutput.SelectSingleNode(erx2Path, profileNSM);
+
+            // Assign variable values
+            Dts.Variables["User::EmailRegEx1"].Value = regExNode1.Value;
+            Dts.Variables["User::EmailRegEx2"].Value = regExNode2.Value;
+
+            // Show variable values
+            MessageBox.Show(Dts.Variables["User::EmailRegEx1"].Value.ToString());
+            MessageBox.Show(Dts.Variables["User::EmailRegEx2"].Value.ToString());
+
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+	}
+
+
+/*******************************************************/
+/* Recipe 4: Correcting data with the Script component */
+/*******************************************************/
+
+-- Variables definition and the Input0_ProcessInputRow method
+    Double MyDate;
+    Double MyOrderId;
+
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        /*
+         * Add your code here
+         */
+        // Check if OrderId column is null 
+        if (Row.OrderId_IsNull)
+        {
+            // if null then replace value with variable value
+            Row.OrderId = MyOrderId;
+        }
+        else
+        {
+            // if not null then replace variable value with column value
+            MyOrderId = Row.OrderId;
+        }
+
+        // Check if Date column is null 
+        if (Row.Date_IsNull)
+        {
+            // if null then replace value with variable value
+            Row.Date = MyDate;
+        }
+        else
+        {
+            // if not null then replace variable value with column value
+            MyDate = Row.Date;
+        }
+    }
+
+
+
+
