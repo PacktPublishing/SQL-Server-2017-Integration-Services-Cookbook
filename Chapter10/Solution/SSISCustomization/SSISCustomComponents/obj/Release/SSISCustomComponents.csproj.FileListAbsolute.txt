@@ -1,0 +1,16 @@
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Release\SSISCustomComponents.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Release\SSISCustomComponents.pdb
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Release\Microsoft.SqlServer.DTSPipelineWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Release\Microsoft.SQLServer.DTSRuntimeWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Release\Microsoft.SqlServer.PipelineHost.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\obj\Release\SSISCustomComponents.csprojResolveAssemblyReference.cache
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\obj\Release\SSISCustomComponents.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\obj\Release\SSISCustomComponents.pdb
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\bin\Release\SSISCustomComponents.dll
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\bin\Release\SSISCustomComponents.pdb
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\bin\Release\Microsoft.SqlServer.DTSPipelineWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\bin\Release\Microsoft.SQLServer.DTSRuntimeWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\bin\Release\Microsoft.SqlServer.PipelineHost.dll
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\obj\Release\SSISCustomComponents.dll
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\obj\Release\SSISCustomComponents.pdb
+C:\SSIS2016Cookbook\Chapter10\Solution\SSISCustomization\SSISCustomComponents\obj\Release\SSISCustomComponents.csprojResolveAssemblyReference.cache

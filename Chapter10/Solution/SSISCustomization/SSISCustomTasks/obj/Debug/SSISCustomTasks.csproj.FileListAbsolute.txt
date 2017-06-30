@@ -1,0 +1,10 @@
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\SSISCustomTasks.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\SSISCustomTasks.pdb
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\Microsoft.SqlServer.Dts.Design.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\Microsoft.SQLServer.ManagedDTS.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\WinSCPnet.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\Microsoft.SqlServer.DTSPipelineWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\Microsoft.SqlServer.DTSRuntimeWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\bin\Debug\Microsoft.SqlServer.PipelineHost.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\obj\Debug\SSISCustomTasks.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomTasks\obj\Debug\SSISCustomTasks.pdb

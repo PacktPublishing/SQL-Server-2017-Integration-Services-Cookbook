@@ -1,0 +1,7 @@
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Debug\SSISCustomComponents.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Debug\SSISCustomComponents.pdb
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Debug\Microsoft.SqlServer.DTSPipelineWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Debug\Microsoft.SQLServer.DTSRuntimeWrap.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\bin\Debug\Microsoft.SqlServer.PipelineHost.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\obj\Debug\SSISCustomComponents.dll
+C:\SSIS2016Cookbook\Chapter10\Starter\SSISCustomization\SSISCustomComponents\obj\Debug\SSISCustomComponents.pdb

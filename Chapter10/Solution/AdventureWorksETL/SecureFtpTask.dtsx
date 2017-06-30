@@ -1,0 +1,191 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/8/2017 2:14:41 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DS130"
+  DTS:CreatorName="DS130\ML"
+  DTS:DTSID="{CE57D637-3CCD-4DEA-86AF-D31E3A40B321}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1060"
+  DTS:ObjectName="SecureFtpTask"
+  DTS:PackageType="5"
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{ECEA3E83-F3AB-46E2-A21C-E4367870F604}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{63B25ECB-0476-4810-836F-52683CDCF1BF}"
+      DTS:ObjectName="HostName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">test.rebex.net</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{D3C6D657-A9B6-4927-89DC-BBF0F6AF6862}"
+      DTS:ObjectName="HostPortNumber">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">22</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E0EF8229-334D-4852-8F93-B2958034BB98}"
+      DTS:ObjectName="LocalPath">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">C:\SSIS2016Cookbook\Chapter10\Files</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{AF9300AB-F5BF-4E38-85F7-E2D682A7278C}"
+      DTS:ObjectName="Password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">password</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{FD3CAB11-025C-43E9-8E9A-28C1C17351A3}"
+      DTS:ObjectName="ProtocolName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Sftp</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{6EB4BE41-D058-468A-A049-E22AC7A8535F}"
+      DTS:ObjectName="RemotePath">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">/pub/example/</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{A5DA7257-F9AB-4BA2-98B5-E33323C2D05E}"
+      DTS:ObjectName="SshHostKeyFingerPrint">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">ssh-rsa 2048 03:61:c4:98:f1:ff:7d:23:97:51:07:13:88:b8:c5:55</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{FBCA64F5-E8A5-474E-A939-4FEE99A665BD}"
+      DTS:ObjectName="UserName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">demo</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1A675AB9-0697-4C77-B66C-A827F30DDB1E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RemoveFiles">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Download Files"
+      DTS:CreationName="SSIS2016Cookbook.SecureFTP, SSISCustomTasks, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4ca32ac877f73de2"
+      DTS:Description="Secure FTP Task"
+      DTS:DTSID="{EA06F401-5D89-4DD2-9928-3A00E657816E}"
+      DTS:ExecutableType="SSIS2016Cookbook.SecureFTP, SSISCustomTasks, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4ca32ac877f73de2"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Download Files"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="FtpHostName">@[$Package::HostName]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpLocalPath">@[$Package::LocalPath]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpPassword">@[$Package::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpPortNumber">@[$Package::HostPortNumber]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpProtocolName">@[$Package::ProtocolName]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpRemotePath">@[$Package::RemotePath]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpRemove">@[User::RemoveFiles]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpSshHostKeyFingerprint">@[$Package::SshHostKeyFingerPrint]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="FtpUserName">@[$Package::UserName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <InnerObject>
+          <FtpHostName
+            Type="8"
+            Value="test.rebex.net" />
+          <FtpLocalPath
+            Type="8"
+            Value="C:\SSIS2016Cookbook\Chapter10\Files" />
+          <FtpOperationName
+            Type="8"
+            Value="GetFiles" />
+          <FtpPassword
+            Type="8"
+            Value="password" />
+          <FtpPortNumber
+            Type="3"
+            Value="22" />
+          <FtpProtocolName
+            Type="8"
+            Value="Sftp" />
+          <FtpRemotePath
+            Type="8"
+            Value="/pub/example/" />
+          <FtpRemove
+            Type="11"
+            Value="0" />
+          <FtpSshHostKeyFingerprint
+            Type="8"
+            Value="ssh-rsa 2048 03:61:c4:98:f1:ff:7d:23:97:51:07:13:88:b8:c5:55" />
+          <FtpUserName
+            Type="8"
+            Value="demo" />
+          <TargetServerVersion
+            Type="3"
+            Value="140" />
+        </InnerObject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Download Files"
+          TopLeft="458,252" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
