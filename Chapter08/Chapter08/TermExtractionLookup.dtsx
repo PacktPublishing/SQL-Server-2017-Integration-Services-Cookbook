@@ -1,0 +1,1454 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2017 2:53:59 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2016EIM"
+  DTS:CreatorName="SQL2016EIM\Administrator"
+  DTS:DTSID="{03981C17-F888-4BC6-8E1F-26B1D183A9FE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="TermExtractionLookup"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{61591E68-A299-4832-8B29-A93EF1596B32}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{29A62107-6B39-4F8F-9F28-F3018FCB9EDD}"
+      DTS:ObjectName="(LOCAL).AdventureWorksDW2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(LOCAL);Initial Catalog=AdventureWorksDW2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BlogsTxt]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{678D1EA5-21E3-4BEF-99FB-9AB85DD29829}"
+      DTS:ObjectName="BlogsTxt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\SSIS2016Cookbook\Blogs.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="blogid"
+              DTS:DTSID="{56816BAA-2AF5-464E-B3DE-0E9DEC74BF23}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="70"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="blogname"
+              DTS:DTSID="{C409D6EE-B249-4C11-8840-7D869597549D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="3500"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="blogbody"
+              DTS:DTSID="{CE773A8D-F8C3-4F8A-AFBB-462256614A19}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\TermExtraction"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{49A686C0-43B2-4A7B-9886-2D17B10122C3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TermExtraction"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TermExtraction\Blogs"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Blogs"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Blogs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TermExtraction\Blogs.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].Columns[blogid]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="blogid"
+                      externalMetadataColumnId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].ExternalColumns[blogid]"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogid]" />
+                    <inputColumn
+                      refId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].Columns[blogname]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="blogname"
+                      externalMetadataColumnId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].ExternalColumns[blogname]"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogname]" />
+                    <inputColumn
+                      refId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].Columns[blogbody]"
+                      cachedDataType="wstr"
+                      cachedLength="3500"
+                      cachedName="blogbody"
+                      externalMetadataColumnId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].ExternalColumns[blogbody]"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogbody]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].ExternalColumns[blogid]"
+                      dataType="wstr"
+                      length="2"
+                      name="blogid" />
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].ExternalColumns[blogname]"
+                      dataType="wstr"
+                      length="70"
+                      name="blogname" />
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input].ExternalColumns[blogbody]"
+                      dataType="wstr"
+                      length="3500"
+                      name="blogbody" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TermExtraction\Blogs.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermExtraction\Blogs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Blogs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TermExtraction\Blogs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Blogs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TermExtraction\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TermExtraction\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BlogsTxt]"
+                  connectionManagerRefId="Package.ConnectionManagers[BlogsTxt]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[blogid]"
+                      length="2"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogid]"
+                      name="blogid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[blogname]"
+                      length="70"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogname]"
+                      name="blogname"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogbody]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[blogbody]"
+                      length="3500"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogbody]"
+                      name="blogbody"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[blogid]"
+                      dataType="wstr"
+                      length="2"
+                      name="blogid" />
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[blogname]"
+                      dataType="wstr"
+                      length="70"
+                      name="blogname" />
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[blogbody]"
+                      dataType="wstr"
+                      length="3500"
+                      name="blogbody" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      dataType="nText"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TermExtraction\MulticastBlogs"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="MulticastBlogs">
+              <inputs>
+                <input
+                  refId="Package\TermExtraction\MulticastBlogs.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TermExtraction\MulticastBlogs.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\TermExtraction\MulticastBlogs.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TermExtraction\MulticastBlogs.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\TermExtraction\MulticastBlogs.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TermExtraction\MulticastBlogs.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\TermExtraction\MulticastBlogs.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TermExtraction\Term Extraction"
+              componentClassID="Microsoft.TermExtraction"
+              description="Extracts frequently used English-only terms from an input data flow. Terms and their corresponding score are written to output data columns. For example, search a group of documents to discover commonly-used terms. Note: an English dictionary is included with Integration Services."
+              name="Term Extraction"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to use exclusion terms."
+                  name="NeedReferenceData">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the reference table containing the exclusion terms."
+                  name="OutTermTable"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column containing the exclusion terms. The column must be in the table specified in the property OutTermTable."
+                  name="OutTermColumn"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of terms to extract. 0 specifies noun, 1 specifies noun phrase, and 2 specifies noun and noun phrase."
+                  name="WordOrPhrase"
+                  typeConverter="WordOrPhrase">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies what kind of score to be associated with a term. 0 means using the frequency of a term as the score; 1 means using the TFIDF of a term as the score."
+                  name="ScoreType"
+                  typeConverter="ScoreType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the frequency threshold above which a term is extracted."
+                  name="FrequencyThreshold">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of words in a term."
+                  name="MaxLengthOfTerm">12</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the Term Extraction process is case sensitive."
+                  name="IsCaseSensitive">false</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\TermExtraction\Term Extraction.Inputs[Term Extraction Input]"
+                  description="Input to Term Extraction Transformation"
+                  name="Term Extraction Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TermExtraction\Term Extraction.Inputs[Term Extraction Input].Columns[blogbody]"
+                      cachedDataType="wstr"
+                      cachedLength="3500"
+                      cachedName="blogbody"
+                      lineageId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output].Columns[blogbody]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output]"
+                  description="Output from Term Extraction Transformation"
+                  errorOrTruncationOperation="Term Extraction"
+                  errorRowDisposition="IgnoreFailure"
+                  name="Term Extraction Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output].Columns[Term]"
+                      dataType="wstr"
+                      description="Output Column from Term Extraction Transform"
+                      length="128"
+                      lineageId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output].Columns[Term]"
+                      name="Term" />
+                    <outputColumn
+                      refId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output].Columns[Score]"
+                      dataType="r8"
+                      description="Score"
+                      lineageId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output].Columns[Score]"
+                      name="Score" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Error Output]"
+                  description="Error Output from Term Extraction Transform"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Term Extraction Error Output"
+                  synchronousInputId="Package\TermExtraction\Term Extraction.Inputs[Term Extraction Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TermExtraction\Terms"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Terms"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Terms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TermExtraction\Terms.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input].Columns[Term]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="Term"
+                      externalMetadataColumnId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input].ExternalColumns[Term]"
+                      lineageId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output].Columns[Term]" />
+                    <inputColumn
+                      refId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input].Columns[Score]"
+                      cachedDataType="r8"
+                      cachedName="Score"
+                      externalMetadataColumnId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input].ExternalColumns[Score]"
+                      lineageId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output].Columns[Score]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input].ExternalColumns[Term]"
+                      dataType="wstr"
+                      length="128"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input].ExternalColumns[Score]"
+                      dataType="r8"
+                      name="Score" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TermExtraction\Terms.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermExtraction\Terms.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Terms.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TermExtraction\Terms.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TermExtraction\Terms.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TermExtraction.Paths[Flat File Source Output]"
+              endId="Package\TermExtraction\MulticastBlogs.Inputs[Multicast Input 1]"
+              name="Flat File Source Output"
+              startId="Package\TermExtraction\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\TermExtraction.Paths[Multicast Output 1]"
+              endId="Package\TermExtraction\Blogs.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\TermExtraction\MulticastBlogs.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\TermExtraction.Paths[Multicast Output 2]"
+              endId="Package\TermExtraction\Term Extraction.Inputs[Term Extraction Input]"
+              name="Multicast Output 2"
+              startId="Package\TermExtraction\MulticastBlogs.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\TermExtraction.Paths[Term Extraction Output]"
+              endId="Package\TermExtraction\Terms.Inputs[OLE DB Destination Input]"
+              name="Term Extraction Output"
+              startId="Package\TermExtraction\Term Extraction.Outputs[Term Extraction Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TermLookup"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3F3B259A-36BE-4B50-912D-9696DE3CFD67}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TermLookup"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\TermLookup\Blogs"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Blogs"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Blogs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TermLookup\Blogs.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogid]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].ExternalColumns[blogid]"
+                      length="2"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogid]"
+                      name="blogid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].ExternalColumns[blogname]"
+                      length="70"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogname]"
+                      name="blogname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogbody]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].ExternalColumns[blogbody]"
+                      length="3500"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogbody]"
+                      name="blogbody"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].ExternalColumns[blogid]"
+                      dataType="wstr"
+                      length="2"
+                      name="blogid" />
+                    <externalMetadataColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].ExternalColumns[blogname]"
+                      dataType="wstr"
+                      length="70"
+                      name="blogname" />
+                    <externalMetadataColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].ExternalColumns[blogbody]"
+                      dataType="wstr"
+                      length="3500"
+                      name="blogbody" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[blogid]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[blogid]"
+                      name="blogid" />
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[blogname]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[blogname]"
+                      name="blogname" />
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[blogbody]"
+                      dataType="wstr"
+                      length="3500"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[blogbody]"
+                      name="blogbody" />
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TermLookup\Term Lookup"
+              componentClassID="Microsoft.TermLookup"
+              description="Determines how frequently specific terms occur in a data flow. Matching terms and their frequency of occurrence are written to output data columns. For example, see if a document contains terms that are common in a particular document category. Note: you must supply a table of reference terms."
+              name="Term Lookup"
+              usesDispositions="true"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the reference table that contains the reference terms."
+                  name="RefTermTable">[dbo].[Terms]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column that contains the reference terms. The column must be in the table specified in the property RefTermTable."
+                  name="RefTermColumn">Term</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the lookup operation is case-sensitive."
+                  name="IsCaseSensitive">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TermLookup\Term Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  description="Reference Data Connection."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TermLookup\Term Lookup.Inputs[Term Lookup Input]"
+                  description="Input to Term Lookup Transformation"
+                  name="Term Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TermLookup\Term Lookup.Inputs[Term Lookup Input].Columns[blogid]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="blogid"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is a pass-thru column and whether it is a lookup column. 0 indicates a pass-thru column, 1 indicates a lookup column, and 2 indicates the column is both a pass-thru and a lookup column."
+                          name="InputColumnType">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TermLookup\Term Lookup.Inputs[Term Lookup Input].Columns[blogname]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="blogname"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogname]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is a pass-thru column and whether it is a lookup column. 0 indicates a pass-thru column, 1 indicates a lookup column, and 2 indicates the column is both a pass-thru and a lookup column."
+                          name="InputColumnType">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\TermLookup\Term Lookup.Inputs[Term Lookup Input].Columns[blogbody]"
+                      cachedDataType="wstr"
+                      cachedLength="3500"
+                      cachedName="blogbody"
+                      lineageId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogbody]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is a pass-thru column and whether it is a lookup column. 0 indicates a pass-thru column, 1 indicates a lookup column, and 2 indicates the column is both a pass-thru and a lookup column."
+                          name="InputColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output]"
+                  description="Output from Term Lookup Transform"
+                  errorOrTruncationOperation="Term Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  name="Term Lookup Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[Term]"
+                      dataType="wstr"
+                      description="Term from the reference data."
+                      length="128"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[Term]"
+                      name="Term" />
+                    <outputColumn
+                      refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[Frequency]"
+                      dataType="i4"
+                      description="The frequency of the term appearing in every text string."
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[Frequency]"
+                      name="Frequency" />
+                    <outputColumn
+                      refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[blogid]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[blogid]"
+                      name="blogid">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage ID of the upstream column that is referenced by this column."
+                          name="CustomLineageID">#{Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[blogname]"
+                      dataType="wstr"
+                      length="70"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[blogname]"
+                      name="blogname">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage ID of the upstream column that is referenced by this column."
+                          name="CustomLineageID">#{Package\TermLookup\Blogs.Outputs[OLE DB Source Output].Columns[blogname]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Error Output]"
+                  description="Error Output from Term Lookup Transform"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Term Lookup Error Output"
+                  synchronousInputId="Package\TermLookup\Term Lookup.Inputs[Term Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\TermLookup\TermsInBlogs"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="TermsInBlogs"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[TermsInBlogs]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\TermLookup\TermsInBlogs.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[(LOCAL).AdventureWorksDW2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].Columns[Term]"
+                      cachedDataType="wstr"
+                      cachedLength="128"
+                      cachedName="Term"
+                      externalMetadataColumnId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[Term]"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[Term]" />
+                    <inputColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].Columns[Frequency]"
+                      cachedDataType="i4"
+                      cachedName="Frequency"
+                      externalMetadataColumnId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[Frequency]"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[Frequency]" />
+                    <inputColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].Columns[blogid]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="blogid"
+                      externalMetadataColumnId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[blogid]"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[blogid]" />
+                    <inputColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].Columns[blogname]"
+                      cachedDataType="wstr"
+                      cachedLength="70"
+                      cachedName="blogname"
+                      externalMetadataColumnId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[blogname]"
+                      lineageId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output].Columns[blogname]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[Term]"
+                      dataType="wstr"
+                      length="128"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[Frequency]"
+                      dataType="i4"
+                      name="Frequency" />
+                    <externalMetadataColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[blogid]"
+                      dataType="wstr"
+                      length="2"
+                      name="blogid" />
+                    <externalMetadataColumn
+                      refId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input].ExternalColumns[blogname]"
+                      dataType="wstr"
+                      length="70"
+                      name="blogname" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\TermLookup\TermsInBlogs.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\TermLookup\TermsInBlogs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\TermLookup\TermsInBlogs.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\TermLookup\TermsInBlogs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\TermLookup\TermsInBlogs.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\TermLookup.Paths[OLE DB Source Output]"
+              endId="Package\TermLookup\Term Lookup.Inputs[Term Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\TermLookup\Blogs.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\TermLookup.Paths[Term Lookup Output]"
+              endId="Package\TermLookup\TermsInBlogs.Inputs[OLE DB Destination Input]"
+              name="Term Lookup Output"
+              startId="Package\TermLookup\Term Lookup.Outputs[Term Lookup Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1F07CFC5-EAB3-429E-90C2-0FC870F76058}"
+      DTS:From="Package\TermExtraction"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TermLookup" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\TermExtraction"
+          TopLeft="63.4285725087536,44.6588241557349" />
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\TermLookup"
+          TopLeft="68.5714297391931,127.858825322584" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="137.600001123973,86.2588241557349">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.6000011668486"
+              Start="0,0"
+              End="0,34.1000011668486">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.1000011668486" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\TermExtraction">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\TermExtraction\Flat File Source"
+          TopLeft="33.7142862884367,31.8117651520303" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\TermExtraction\MulticastBlogs"
+          TopLeft="36.0000006130764,110.729413317644" />
+        <EdgeLayout
+          Id="Package\TermExtraction.Paths[Flat File Source Output]"
+          TopLeft="108.657143450757,73.4117651520304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.3176481656138"
+              Start="0,0"
+              End="0,29.8176481656138">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.8176481656138" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="103.2,41.6"
+          Id="Package\TermExtraction\Blogs"
+          TopLeft="54.8571437913545,192.705885055568" />
+        <EdgeLayout
+          Id="Package\TermExtraction.Paths[Multicast Output 1]"
+          TopLeft="107.428572202215,152.329413317644">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.3764717379243"
+              Start="0,0"
+              End="0,32.8764717379243">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.8764717379243" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\TermExtraction\Term Extraction"
+          TopLeft="229.142861045137,111.341178032106" />
+        <EdgeLayout
+          Id="Package\TermExtraction.Paths[Multicast Output 2]"
+          TopLeft="180.800000613076,131.835295674875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.3428604320604,0"
+              Start="0,0"
+              End="40.8428604320604,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="40.8428604320604,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="108,41.6"
+          Id="Package\TermExtraction\Terms"
+          TopLeft="247.428575642255,192.094120341106" />
+        <EdgeLayout
+          Id="Package\TermExtraction.Paths[Term Extraction Output]"
+          TopLeft="303.685718343696,152.941178032106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.152942309"
+              Start="0,0"
+              End="0,31.652942309">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.652942309" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\TermLookup">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="103.2,41.6"
+          Id="Package\TermLookup\Blogs"
+          TopLeft="83.3846153846154,27.8153846153846" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\TermLookup\Term Lookup"
+          TopLeft="70.1538461538462,107.692307692308" />
+        <EdgeLayout
+          Id="Package\TermLookup.Paths[OLE DB Source Output]"
+          TopLeft="137.769230769231,69.4153846153846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.2769230769231"
+              Start="0,0"
+              End="0,30.7769230769231">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.7769230769231" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\TermLookup\TermsInBlogs"
+          TopLeft="64.6153846153846,207.384615384615" />
+        <EdgeLayout
+          Id="Package\TermLookup.Paths[Term Lookup Output]"
+          TopLeft="138.384615384615,149.292307692308">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.0923076923077"
+              Start="0,0"
+              End="0,50.5923076923077">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5923076923077" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TermExtraction\Blogs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TermExtraction\Terms">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TermLookup\Blogs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TermLookup\Term Lookup">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\TermLookup\TermsInBlogs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
