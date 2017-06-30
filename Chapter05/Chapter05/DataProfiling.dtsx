@@ -1,0 +1,158 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/19/2017 7:40:48 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SQL2016EIM"
+  DTS:CreatorName="SQL2016EIM\Administrator"
+  DTS:DTSID="{F55C545C-E926-47CF-AFAC-6C05827E2F0B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DataProfiling"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{29FBD2A5-4359-4CCB-8637-5BE687F6837D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DataProfiling.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2281B0D2-F29C-4FBB-A532-CE3880C64BE9}"
+      DTS:ObjectName="DataProfiling.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\SSIS2016Cookbook\DataProfiling.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.AdventureWorksDW2014]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}"
+      DTS:ObjectName="localhost.AdventureWorksDW2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=AdventureWorksDW2014;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Profiling Task"
+      DTS:CreationName="Microsoft.DataProfilingTask"
+      DTS:Description="Data Profiling Task"
+      DTS:DTSID="{027D4710-D681-4D01-BD1E-2B9C31E2AAF7}"
+      DTS:ExecutableType="Microsoft.DataProfilingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Profiling Task"
+      DTS:TaskContact="Data Profiling Task; Microsoft Corporation; SQL Server 2016; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <DataProfilingTaskData
+          Destination="DataProfiling.xml"
+          OverwriteDestination="True">
+          <ProfileInput><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<DataProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/sqlserver/2008/DataDebugger/">
+  <ProfileVersion>1.0</ProfileVersion>
+  <DataSources />
+  <DataProfileInput>
+    <ProfileMode>Exact</ProfileMode>
+    <Timeout>0</Timeout>
+    <Requests>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="MiddleName" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <FunctionalDependencyProfileRequest ID="FDReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <DeterminantColumns>
+          <Column IsWildCard="false" ColumnName="Education" />
+          <Column IsWildCard="false" ColumnName="HouseOwnerFlag" />
+          <Column IsWildCard="false" ColumnName="MaritalStatus" />
+          <Column IsWildCard="false" ColumnName="NumberCarsOwned" />
+        </DeterminantColumns>
+        <DependentColumn IsWildCard="false" ColumnName="Occupation" />
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <FDStrengthThreshold>0.3</FDStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </FunctionalDependencyProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="MiddleName" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnPatternProfileRequest ID="PatternReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="EmailAddress" />
+        <MaxNumberOfPatterns>10</MaxNumberOfPatterns>
+        <PercentageDataCoverageDesired>95</PercentageDataCoverageDesired>
+        <CaseSensitive>false</CaseSensitive>
+        <Delimiters> \t\r\n</Delimiters>
+        <Symbols>,.;:-"'`~=&amp;/\\@!?()&lt;&gt;[]{}|#*^%</Symbols>
+        <TagTableName />
+      </ColumnPatternProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="Age" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="NumberCarsOwned" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+    </Requests>
+  </DataProfileInput>
+  <DataProfileOutput>
+    <Profiles />
+  </DataProfileOutput>
+</DataProfile>]]></ProfileInput>
+        </DataProfilingTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Data Profiling Task"
+          TopLeft="106.857144676909,72.1882363065304" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1219 @@
+<?xml version="1.0"?>
+<DataProfile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/sqlserver/2008/DataDebugger/">
+  <ProfileVersion>1.0</ProfileVersion>
+  <DataSources>
+    <DtsDataSource ID="{2281B0D2-F29C-4FBB-A532-CE3880C64BE9}" Name="DataProfiling.xml">
+      <DtsConnectionManagerID>DataProfiling.xml</DtsConnectionManagerID>
+    </DtsDataSource>
+    <DtsDataSource ID="{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}" Name="localhost.AdventureWorksDW2014">
+      <DtsConnectionManagerID>localhost.AdventureWorksDW2014</DtsConnectionManagerID>
+    </DtsDataSource>
+  </DataSources>
+  <DataProfileInput>
+    <ProfileMode>Exact</ProfileMode>
+    <Timeout>0</Timeout>
+    <Requests>
+      <ColumnLengthDistributionProfileRequest ID="LengthDistReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="MiddleName" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+      </ColumnLengthDistributionProfileRequest>
+      <FunctionalDependencyProfileRequest ID="FDReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <DeterminantColumns>
+          <Column IsWildCard="false" ColumnName="Education" />
+          <Column IsWildCard="false" ColumnName="HouseOwnerFlag" />
+          <Column IsWildCard="false" ColumnName="MaritalStatus" />
+          <Column IsWildCard="false" ColumnName="NumberCarsOwned" />
+        </DeterminantColumns>
+        <DependentColumn IsWildCard="false" ColumnName="Occupation" />
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <FDStrengthThreshold>0.3</FDStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </FunctionalDependencyProfileRequest>
+      <CandidateKeyProfileRequest ID="KeyReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <KeyColumns>
+          <Column IsWildCard="true" />
+        </KeyColumns>
+        <ThresholdSetting>Specified</ThresholdSetting>
+        <KeyStrengthThreshold>0.95</KeyStrengthThreshold>
+        <VerifyOutputInFastMode>false</VerifyOutputInFastMode>
+        <MaxNumberOfViolations>100</MaxNumberOfViolations>
+      </CandidateKeyProfileRequest>
+      <ColumnNullRatioProfileRequest ID="NullRatioReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="MiddleName" />
+      </ColumnNullRatioProfileRequest>
+      <ColumnPatternProfileRequest ID="PatternReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="EmailAddress" />
+        <MaxNumberOfPatterns>10</MaxNumberOfPatterns>
+        <PercentageDataCoverageDesired>95</PercentageDataCoverageDesired>
+        <CaseSensitive>false</CaseSensitive>
+        <Delimiters> \t\r\n</Delimiters>
+        <Symbols>,.;:-"'`~=&amp;/\\@!?()&lt;&gt;[]{}|#*^%</Symbols>
+        <TagTableName />
+      </ColumnPatternProfileRequest>
+      <ColumnStatisticsProfileRequest ID="StatisticsReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="Age" />
+      </ColumnStatisticsProfileRequest>
+      <ColumnValueDistributionProfileRequest ID="ValueDistReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table Schema="dbo" Table="Chapter05Profiling" />
+        <Column IsWildCard="false" ColumnName="NumberCarsOwned" />
+        <Option>FrequentValues</Option>
+        <FrequentValueThreshold>0.001</FrequentValueThreshold>
+      </ColumnValueDistributionProfileRequest>
+    </Requests>
+  </DataProfileInput>
+  <DataProfileOutput>
+    <Profiles>
+      <ColumnLengthDistributionProfile ProfileRequestID="LengthDistReq" IsExact="true">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <Column Name="MiddleName" SqlDbType="NVarChar" MaxLength="50" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        <IgnoreLeadingSpace>false</IgnoreLeadingSpace>
+        <IgnoreTrailingSpace>true</IgnoreTrailingSpace>
+        <MinLength>1</MinLength>
+        <MaxLength>10</MaxLength>
+        <LengthDistribution>
+          <LengthDistributionItem>
+            <Length>3</Length>
+            <Count>1</Count>
+          </LengthDistributionItem>
+          <LengthDistributionItem>
+            <Length>6</Length>
+            <Count>2</Count>
+          </LengthDistributionItem>
+          <LengthDistributionItem>
+            <Length>1</Length>
+            <Count>10610</Count>
+          </LengthDistributionItem>
+          <LengthDistributionItem>
+            <Length>10</Length>
+            <Count>1</Count>
+          </LengthDistributionItem>
+          <LengthDistributionItem>
+            <Length>4</Length>
+            <Count>1</Count>
+          </LengthDistributionItem>
+          <LengthDistributionItem>
+            <Length>2</Length>
+            <Count>39</Count>
+          </LengthDistributionItem>
+        </LengthDistribution>
+      </ColumnLengthDistributionProfile>
+      <ColumnNullRatioProfile ProfileRequestID="NullRatioReq" IsExact="true">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <Column Name="MiddleName" SqlDbType="NVarChar" MaxLength="50" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        <NullCount>7830</NullCount>
+      </ColumnNullRatioProfile>
+      <ColumnStatisticsProfile IsExact="true" ProfileRequestID="StatisticsReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <Column Name="Age" SqlDbType="Int" MaxLength="0" Precision="10" Scale="0" LCID="-1" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        <MinValue>20</MinValue>
+        <MaxValue>91</MaxValue>
+        <Mean>37.5891581908678</Mean>
+        <StdDev>11.5212233882946</StdDev>
+      </ColumnStatisticsProfile>
+      <ColumnPatternProfile ProfileRequestID="PatternReq" IsExact="false">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <Column Name="EmailAddress" SqlDbType="NVarChar" MaxLength="50" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        <TopRegexPatterns>
+          <PatternDistributionItem>
+            <RegexText>\p{L}+\d\d@ADVENTURE-WORKS\.COM</RegexText>
+            <Frequency>72</Frequency>
+          </PatternDistributionItem>
+          <PatternDistributionItem>
+            <RegexText>\p{L}+\d@ADVENTURE-WORKS\.COM</RegexText>
+            <Frequency>28</Frequency>
+          </PatternDistributionItem>
+        </TopRegexPatterns>
+      </ColumnPatternProfile>
+      <ColumnValueDistributionProfile IsExact="true" ProfileRequestID="ValueDistReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <Column Name="NumberCarsOwned" SqlDbType="TinyInt" MaxLength="0" Precision="3" Scale="0" LCID="-1" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        <NumberOfDistinctValues>5</NumberOfDistinctValues>
+        <ValueDistribution>
+          <ValueDistributionItem>
+            <Value>0</Value>
+            <Count>4238</Count>
+          </ValueDistributionItem>
+          <ValueDistributionItem>
+            <Value>3</Value>
+            <Count>1645</Count>
+          </ValueDistributionItem>
+          <ValueDistributionItem>
+            <Value>1</Value>
+            <Count>4883</Count>
+          </ValueDistributionItem>
+          <ValueDistributionItem>
+            <Value>4</Value>
+            <Count>1261</Count>
+          </ValueDistributionItem>
+          <ValueDistributionItem>
+            <Value>2</Value>
+            <Count>6457</Count>
+          </ValueDistributionItem>
+        </ValueDistribution>
+      </ColumnValueDistributionProfile>
+      <CandidateKeyProfile IsExact="true" ProfileRequestID="KeyReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <KeyColumns>
+          <Column Name="CustomerKey" SqlDbType="Int" MaxLength="0" Precision="10" Scale="0" LCID="-1" CodePage="0" IsNullable="false" StringCompareOptions="0" />
+        </KeyColumns>
+        <IsExactKey>true</IsExactKey>
+      </CandidateKeyProfile>
+      <CandidateKeyProfile IsExact="true" ProfileRequestID="KeyReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <KeyColumns>
+          <Column Name="EmailAddress" SqlDbType="NVarChar" MaxLength="50" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        </KeyColumns>
+        <IsExactKey>true</IsExactKey>
+      </CandidateKeyProfile>
+      <FunctionalDependencyProfile IsExact="true" ProfileRequestID="FDReq">
+        <DataSourceID>{DF8BC2F6-F44E-4DA2-BEDB-7C3D02D13370}</DataSourceID>
+        <Table DataSource="localhost" Database="AdventureWorksDW2014" Schema="dbo" Table="Chapter05Profiling" RowCount="18484" />
+        <DeterminantColumns>
+          <Column Name="Education" SqlDbType="NVarChar" MaxLength="40" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+          <Column Name="HouseOwnerFlag" SqlDbType="NChar" MaxLength="1" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+          <Column Name="MaritalStatus" SqlDbType="NChar" MaxLength="1" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+          <Column Name="NumberCarsOwned" SqlDbType="TinyInt" MaxLength="0" Precision="3" Scale="0" LCID="-1" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        </DeterminantColumns>
+        <DependentColumn Name="Occupation" SqlDbType="NVarChar" MaxLength="100" Precision="255" Scale="255" LCID="1033" CodePage="0" IsNullable="true" StringCompareOptions="0" />
+        <IsExactFD>false</IsExactFD>
+        <FDStrength>0.5262389</FDStrength>
+        <FDViolations>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>42</SupportCount>
+            <ViolationCount>64</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>59</SupportCount>
+            <ViolationCount>30</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>63</SupportCount>
+            <ViolationCount>29</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>44</SupportCount>
+            <ViolationCount>21</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>22</SupportCount>
+            <ViolationCount>17</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>103</SupportCount>
+            <ViolationCount>90</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>363</SupportCount>
+            <ViolationCount>150</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>94</SupportCount>
+            <ViolationCount>118</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>99</SupportCount>
+            <ViolationCount>75</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>65</SupportCount>
+            <ViolationCount>37</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>343</SupportCount>
+            <ViolationCount>569</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>274</SupportCount>
+            <ViolationCount>343</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>358</SupportCount>
+            <ViolationCount>245</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>159</SupportCount>
+            <ViolationCount>156</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>167</SupportCount>
+            <ViolationCount>102</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>124</SupportCount>
+            <ViolationCount>123</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>189</SupportCount>
+            <ViolationCount>121</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>134</SupportCount>
+            <ViolationCount>123</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>78</SupportCount>
+            <ViolationCount>71</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Bachelors</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>55</SupportCount>
+            <ViolationCount>37</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>40</SupportCount>
+            <ViolationCount>67</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>15</SupportCount>
+            <ViolationCount>10</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>47</SupportCount>
+            <ViolationCount>8</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>11</SupportCount>
+            <ViolationCount>4</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>118</SupportCount>
+            <ViolationCount>144</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>52</SupportCount>
+            <ViolationCount>32</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>84</SupportCount>
+            <ViolationCount>2</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>21</SupportCount>
+            <ViolationCount>1</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>405</SupportCount>
+            <ViolationCount>747</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>65</SupportCount>
+            <ViolationCount>30</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>287</SupportCount>
+            <ViolationCount>31</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>93</SupportCount>
+            <ViolationCount>19</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>42</SupportCount>
+            <ViolationCount>1</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>218</SupportCount>
+            <ViolationCount>304</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>43</SupportCount>
+            <ViolationCount>29</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>133</SupportCount>
+            <ViolationCount>8</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Graduate Degree</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>27</SupportCount>
+            <ViolationCount>5</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>4</SupportCount>
+            <ViolationCount>3</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>42</SupportCount>
+            <ViolationCount>8</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>158</SupportCount>
+            <ViolationCount>220</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>17</SupportCount>
+            <ViolationCount>13</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>22</SupportCount>
+            <ViolationCount>9</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>53</SupportCount>
+            <ViolationCount>1</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>268</SupportCount>
+            <ViolationCount>25</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>221</SupportCount>
+            <ViolationCount>133</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>24</SupportCount>
+            <ViolationCount>11</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>24</SupportCount>
+            <ViolationCount>18</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>44</SupportCount>
+            <ViolationCount>26</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>53</SupportCount>
+            <ViolationCount>82</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>375</SupportCount>
+            <ViolationCount>299</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>68</SupportCount>
+            <ViolationCount>94</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>68</SupportCount>
+            <ViolationCount>62</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>89</SupportCount>
+            <ViolationCount>13</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>140</SupportCount>
+            <ViolationCount>25</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>217</SupportCount>
+            <ViolationCount>248</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>33</SupportCount>
+            <ViolationCount>36</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Management</DependentValue>
+            <SupportCount>23</SupportCount>
+            <ViolationCount>25</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>17</SupportCount>
+            <ViolationCount>27</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>47</SupportCount>
+            <ViolationCount>128</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>107</SupportCount>
+            <ViolationCount>162</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>20</SupportCount>
+            <ViolationCount>24</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>23</SupportCount>
+            <ViolationCount>7</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>79</SupportCount>
+            <ViolationCount>17</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>216</SupportCount>
+            <ViolationCount>405</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>142</SupportCount>
+            <ViolationCount>194</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>37</SupportCount>
+            <ViolationCount>15</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>47</SupportCount>
+            <ViolationCount>7</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>114</SupportCount>
+            <ViolationCount>73</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>404</SupportCount>
+            <ViolationCount>629</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>322</SupportCount>
+            <ViolationCount>209</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>143</SupportCount>
+            <ViolationCount>66</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>122</SupportCount>
+            <ViolationCount>18</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>89</SupportCount>
+            <ViolationCount>73</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>202</SupportCount>
+            <ViolationCount>332</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>163</SupportCount>
+            <ViolationCount>272</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>40</SupportCount>
+            <ViolationCount>27</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial College</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>40</SupportCount>
+            <ViolationCount>5</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>4</SupportCount>
+            <ViolationCount>2</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>62</SupportCount>
+            <ViolationCount>91</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>6</SupportCount>
+            <ViolationCount>2</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>16</SupportCount>
+            <ViolationCount>9</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>17</SupportCount>
+            <ViolationCount>2</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>235</SupportCount>
+            <ViolationCount>224</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>6</SupportCount>
+            <ViolationCount>7</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>13</SupportCount>
+            <ViolationCount>6</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>0</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>3</SupportCount>
+            <ViolationCount>3</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Clerical</DependentValue>
+            <SupportCount>125</SupportCount>
+            <ViolationCount>183</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>27</SupportCount>
+            <ViolationCount>9</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>M</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>70</SupportCount>
+            <ViolationCount>25</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>2</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Manual</DependentValue>
+            <SupportCount>156</SupportCount>
+            <ViolationCount>175</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>3</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Skilled Manual</DependentValue>
+            <SupportCount>13</SupportCount>
+            <ViolationCount>6</ViolationCount>
+          </FDViolationItem>
+          <FDViolationItem>
+            <DeterminantValues>
+              <ColumnValue>Partial High School</ColumnValue>
+              <ColumnValue>1</ColumnValue>
+              <ColumnValue>S</ColumnValue>
+              <ColumnValue>4</ColumnValue>
+            </DeterminantValues>
+            <DependentValue>Professional</DependentValue>
+            <SupportCount>19</SupportCount>
+            <ViolationCount>9</ViolationCount>
+          </FDViolationItem>
+        </FDViolations>
+      </FunctionalDependencyProfile>
+    </Profiles>
+  </DataProfileOutput>
+</DataProfile>

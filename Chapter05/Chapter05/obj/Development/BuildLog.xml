@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>Chapter05</Name>
+    <LastWriteTime>2017-05-19T12:58:03.1016289Z</LastWriteTime>
+    <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>DataProfiling.dtsx</Name>
+      <LastWriteTime>2017-05-19T12:58:03.070385Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DataMatching.dtsx</Name>
+      <LastWriteTime>2017-05-19T12:57:03.2055606Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>
