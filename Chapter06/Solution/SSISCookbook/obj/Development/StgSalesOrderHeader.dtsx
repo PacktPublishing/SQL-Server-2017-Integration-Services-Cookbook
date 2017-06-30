@@ -1,0 +1,1394 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2008 3:55:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XP-VMW"
+  DTS:CreatorName="XP-VMW\Christian"
+  DTS:DTSID="{7D6C6F69-9776-4557-B8DD-AB9B45406403}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StgSalesOrderHeader"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="115"
+  DTS:VersionGUID="{A3829A2E-E9D0-4C99-90BF-83D5F7A5AF18}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{8FB19AB0-E12C-4B7B-9A83-77125577BB79}"
+      DTS:ObjectName="LoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,18,OnPipelineRowsSent</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_Staging_StgSalesOrderHeader"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{36682e04-c17f-40a0-9d3e-81fd146b33ff}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_Staging_StgSalesOrderHeader"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              localeId="1033"
+              name="dcnv_Unicode_Strings"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input].Columns[SalesOrderNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="SalesOrderNumber"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input].Columns[PurchaseOrderNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="PurchaseOrderNumber"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[PurchaseOrderNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input].Columns[AccountNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="AccountNumber"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[AccountNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input].Columns[ShipMethod]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ShipMethod"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipMethod]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[PurchaseOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[PurchaseOrderNumber]"
+                      name="PurchaseOrderNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[PurchaseOrderNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[AccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[AccountNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[ShipMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[ShipMethod]"
+                      name="ShipMethod"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipMethod]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              localeId="1033"
+              name="der_LoadExecutionId"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      name="LoadExecutionId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadExecutionId]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadExecutionId]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              localeId="1033"
+              name="ole_dst_Staging_StgSalesOrderHeader"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Staging].[StgSalesOrderHeader]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[SalesOrderID]"
+                      cachedDataType="i4"
+                      cachedName="SalesOrderID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      name="SalesOrderID" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[RevisionNumber]"
+                      cachedDataType="ui1"
+                      cachedName="RevisionNumber"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[RevisionNumber]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[RevisionNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[DueDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DueDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[DueDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[DueDate]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[ShipDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ShipDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ShipDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipDate]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedDataType="ui1"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[OnlineOrderFlag]"
+                      cachedDataType="bool"
+                      cachedName="OnlineOrderFlag"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[OnlineOrderFlag]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[OnlineOrderFlag]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="i4"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[CreditCardApprovalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="CreditCardApprovalCode"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[CreditCardApprovalCode]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[CreditCardApprovalCode]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[SubTotal]"
+                      cachedDataType="cy"
+                      cachedName="SubTotal"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[SubTotal]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SubTotal]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[TaxAmt]"
+                      cachedDataType="cy"
+                      cachedName="TaxAmt"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[TaxAmt]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[TaxAmt]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[Freight]"
+                      cachedDataType="cy"
+                      cachedName="Freight"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[Freight]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Freight]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[TotalDue]"
+                      cachedDataType="cy"
+                      cachedName="TotalDue"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[TotalDue]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[TotalDue]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[ShipToAddressID]"
+                      cachedDataType="i4"
+                      cachedName="ShipToAddressID"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ShipToAddressID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipToAddressID]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[BillToAddressID]"
+                      cachedDataType="i4"
+                      cachedName="BillToAddressID"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[BillToAddressID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[BillToAddressID]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[SalesOrderNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="SalesOrderNumber"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderNumber]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[SalesOrderNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[PurchaseOrderNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="PurchaseOrderNumber"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderNumber]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[PurchaseOrderNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[AccountNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="AccountNumber"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[AccountNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[ShipMethod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ShipMethod"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ShipMethod]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output].Columns[ShipMethod]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[Comment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="128"
+                      cachedName="Comment"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Comment]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].Columns[LoadExecutionId]"
+                      cachedDataType="i8"
+                      cachedName="LoadExecutionId"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[RevisionNumber]"
+                      dataType="ui1"
+                      name="RevisionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[DueDate]"
+                      dataType="dbTimeStamp"
+                      name="DueDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      name="ShipDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      dataType="ui1"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[OnlineOrderFlag]"
+                      dataType="bool"
+                      name="OnlineOrderFlag" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[SalesOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="SalesOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="PurchaseOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ShipMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ShipMethod" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CreditCardApprovalCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[SubTotal]"
+                      dataType="cy"
+                      name="SubTotal" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[TaxAmt]"
+                      dataType="cy"
+                      name="TaxAmt" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="Comment" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[ShipToAddressID]"
+                      dataType="i4"
+                      name="ShipToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[BillToAddressID]"
+                      dataType="i4"
+                      name="BillToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      dataType="i8"
+                      name="LoadExecutionId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              localeId="1033"
+              name="ole_src_SalesLT_SalesOrderHeader"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        SalesOrderID, RevisionNumber, OrderDate, DueDate, ShipDate, Status, OnlineOrderFlag, SalesOrderNumber, PurchaseOrderNumber, AccountNumber, CustomerID, 
+                         ShipToAddressID, BillToAddressID, ShipMethod, CreditCardApprovalCode, SubTotal, TaxAmt, Freight, TotalDue, LEFT(CAST(Comment AS VARCHAR(8000)), 128) AS Comment, rowguid, ModifiedDate
+FROM            SalesLT.SalesOrderHeader
+ORDER BY SalesOrderID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0",{3820C58B-47A5-4646-AC16-05F6073B53C1};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Connections[OleDbConnection]"
+                  connectionManagerID="{278CFE86-7E15-4D6C-8FD3-1B4F67CBE55C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_Source]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderID]"
+                      name="SalesOrderID"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[RevisionNumber]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[RevisionNumber]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[RevisionNumber]"
+                      name="RevisionNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[DueDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[DueDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[DueDate]"
+                      name="DueDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                      name="ShipDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[OnlineOrderFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[OnlineOrderFlag]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[OnlineOrderFlag]"
+                      name="OnlineOrderFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[PurchaseOrderNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderNumber]"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[PurchaseOrderNumber]"
+                      name="PurchaseOrderNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                      name="AccountNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipToAddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ShipToAddressID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipToAddressID]"
+                      name="ShipToAddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[BillToAddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[BillToAddressID]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[BillToAddressID]"
+                      name="BillToAddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipMethod]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ShipMethod]"
+                      length="50"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[ShipMethod]"
+                      name="ShipMethod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[CreditCardApprovalCode]"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[CreditCardApprovalCode]"
+                      name="CreditCardApprovalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                      name="SubTotal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                      name="TaxAmt"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Freight]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Freight]"
+                      name="Freight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                      name="TotalDue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Comment]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Comment]"
+                      length="128"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].Columns[Comment]"
+                      name="Comment"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderID]"
+                      dataType="i4"
+                      name="SalesOrderID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[RevisionNumber]"
+                      dataType="ui1"
+                      name="RevisionNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[DueDate]"
+                      dataType="dbTimeStamp"
+                      name="DueDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      name="ShipDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="ui1"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[OnlineOrderFlag]"
+                      dataType="bool"
+                      name="OnlineOrderFlag" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SalesOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="SalesOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="PurchaseOrderNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="AccountNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                      dataType="i4"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ShipToAddressID]"
+                      dataType="i4"
+                      name="ShipToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[BillToAddressID]"
+                      dataType="i4"
+                      name="BillToAddressID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[ShipMethod]"
+                      dataType="wstr"
+                      length="50"
+                      name="ShipMethod" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CreditCardApprovalCode" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                      dataType="cy"
+                      name="SubTotal" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                      dataType="cy"
+                      name="TaxAmt" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                      dataType="cy"
+                      name="Freight" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                      dataType="cy"
+                      name="TotalDue" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output].ExternalColumns[Comment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      name="Comment" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesOrderID]"
+                      name="SalesOrderID" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[RevisionNumber]"
+                      dataType="ui1"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[RevisionNumber]"
+                      name="RevisionNumber" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[DueDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[DueDate]"
+                      name="DueDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                      name="ShipDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="ui1"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[OnlineOrderFlag]"
+                      dataType="bool"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[OnlineOrderFlag]"
+                      name="OnlineOrderFlag" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[SalesOrderNumber]"
+                      name="SalesOrderNumber" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderNumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderNumber]"
+                      name="PurchaseOrderNumber" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                      name="AccountNumber" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ShipToAddressID]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ShipToAddressID]"
+                      name="ShipToAddressID" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[BillToAddressID]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[BillToAddressID]"
+                      name="BillToAddressID" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ShipMethod]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ShipMethod]"
+                      name="ShipMethod" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[CreditCardApprovalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[CreditCardApprovalCode]"
+                      name="CreditCardApprovalCode" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                      dataType="cy"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                      name="SubTotal" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                      dataType="cy"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                      name="TaxAmt" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                      dataType="cy"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                      name="Freight" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      dataType="cy"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                      name="TotalDue" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[Comment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="128"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[Comment]"
+                      name="Comment" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_Staging_StgSalesOrderHeader.Paths[Data Conversion Output]"
+              endId="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\dft_Staging_StgSalesOrderHeader.Paths[Derived Column Output]"
+              endId="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_Staging_StgSalesOrderHeader.Paths[OLE DB Source Output]"
+              endId="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sql_DeleteCurrentLoadExecutionIdData"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{a3be06ca-2b76-42ee-85d9-c720a5ee9fa1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sql_DeleteCurrentLoadExecutionIdData"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+          SQLTask:SqlStatementSource="DELETE FROM [Staging].[StgSalesOrderHeader] WHERE [LoadIExecutiond] = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::LoadExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8E75B567-F1E0-4E09-A77D-6881919BD306}"
+      DTS:From="Package\sql_DeleteCurrentLoadExecutionIdData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\dft_Staging_StgSalesOrderHeader" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="263,42"
+          Id="Package\dft_Staging_StgSalesOrderHeader"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="263,42"
+          Id="Package\sql_DeleteCurrentLoadExecutionIdData"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="137,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft_Staging_StgSalesOrderHeader">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="260,42"
+          Id="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader"
+          TopLeft="5.50000000000003,5.5" />
+        <NodeLayout
+          Size="260,42"
+          Id="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader"
+          TopLeft="5.50000000000003,311.5" />
+        <NodeLayout
+          Size="260,42"
+          Id="Package\dft_Staging_StgSalesOrderHeader\der_LoadExecutionId"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="260,42"
+          Id="Package\dft_Staging_StgSalesOrderHeader\dcnv_Unicode_Strings"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\dft_Staging_StgSalesOrderHeader.Paths[OLE DB Source Output]"
+          TopLeft="135.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_Staging_StgSalesOrderHeader.Paths[Derived Column Output]"
+          TopLeft="135.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_Staging_StgSalesOrderHeader.Paths[Data Conversion Output]"
+          TopLeft="135.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_Staging_StgSalesOrderHeader\ole_src_SalesLT_SalesOrderHeader">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_Staging_StgSalesOrderHeader\ole_dst_Staging_StgSalesOrderHeader">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1142 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2008 3:55:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XP-VMW"
+  DTS:CreatorName="XP-VMW\Christian"
+  DTS:DTSID="{5A6DD884-5DBF-4FCD-A1D6-706C1BD5C25B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StgProduct"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="139"
+  DTS:VersionGUID="{0F4E7E27-D133-4F89-8F98-3DD470DCFEFA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{BEDF9AD7-0446-46A8-AB07-92E51605F374}"
+      DTS:ObjectName="LoadExecutionId"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,18,OnPipelineRowsSent</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dft_Staging_StgProducts"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5FE027E4-687A-45A2-8ABB-E381FADCC6CF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dft_Staging_StgProducts"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input].Columns[ProductNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="ProductNumber"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductNumber]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="Size"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Size]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Name"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[LoadExecutionId]"
+                      name="LoadExecutionId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[$Package::LoadExecutionId]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[$Package::LoadExecutionId]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ProductNumberDTSTR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ProductNumberDTSTR]"
+                      name="ProductNumberDTSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,25,1252)[LEFT](#{Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductNumber]},25)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,25,1252)LEFT(ProductNumber,25)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ColorDTSTR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ColorDTSTR]"
+                      name="ColorDTSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,15,1252)#{Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Color]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,15,1252)Color</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[SizeDTSTR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[SizeDTSTR]"
+                      name="SizeDTSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,5,1252)#{Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Size]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,5,1252)Size</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ProductNameDTSTR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ProductNameDTSTR]"
+                      name="ProductNameDTSTR"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)[LEFT](#{Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Name]},50)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)LEFT(Name,50)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ole_dst_Staging_StgProduct"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Staging].[StgProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Connections[OleDbConnection]"
+                  connectionManagerID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[StandardCost]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ListPrice]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Weight]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ProductModelID]"
+                      cachedDataType="i4"
+                      cachedName="ProductModelID"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductModelID]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[SellStartDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[SellStartDate]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[SellEndDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[SellEndDate]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[DiscontinuedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DiscontinuedDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[DiscontinuedDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[DiscontinuedDate]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ProductCategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductCategoryID"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductCategoryID]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ColorDTSTR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="ColorDTSTR"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ColorDTSTR]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[SizeDTSTR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="SizeDTSTR"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Size]"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[SizeDTSTR]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ProductNumberDTSTR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="ProductNumberDTSTR"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductNumber]"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ProductNumberDTSTR]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[ProductNameDTSTR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProductNameDTSTR"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[ProductNameDTSTR]" />
+                    <inputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].Columns[LoadExecutionId]"
+                      cachedDataType="i8"
+                      cachedName="LoadExecutionId"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      lineageId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output].Columns[LoadExecutionId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductNumber]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="ProductNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Size]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                      dataType="i4"
+                      name="ProductModelID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      dataType="i4"
+                      name="ProductCategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      name="DiscontinuedDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input].ExternalColumns[LoadExecutionId]"
+                      dataType="i8"
+                      name="LoadExecutionId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ole_src_SalesLT_Product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ProductID, Name, ProductNumber, Color, StandardCost, ListPrice, [Size], Weight, ProductCategoryID, ProductModelID, SellStartDate, SellEndDate, DiscontinuedDate, 
+                         ThumbNailPhoto, ThumbnailPhotoFileName, rowguid, ModifiedDate
+FROM            [SalesLT].[Product]
+ORDER BY ProductID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"Parameter0",{B483E348-1ED3-49B9-A387-904B24D857CD};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Connections[OleDbConnection]"
+                  connectionManagerID="{278CFE86-7E15-4D6C-8FD3-1B4F67CBE55C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[cmgr_Source]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductNumber]"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductNumber]"
+                      name="ProductNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[StandardCost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[StandardCost]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[StandardCost]"
+                      name="StandardCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Size]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Size]"
+                      length="5"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Size]"
+                      name="Size"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Weight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Weight]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductModelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductModelID]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductModelID]"
+                      name="ProductModelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[SellStartDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[SellStartDate]"
+                      name="SellStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[SellEndDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[SellEndDate]"
+                      name="SellEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[DiscontinuedDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[DiscontinuedDate]"
+                      name="DiscontinuedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="80"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                      name="ProductCategoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ThumbNailPhoto]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ThumbNailPhoto]"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ThumbNailPhoto]"
+                      name="ThumbNailPhoto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ThumbnailPhotoFileName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ThumbnailPhotoFileName]"
+                      length="50"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].Columns[ThumbnailPhotoFileName]"
+                      name="ThumbnailPhotoFileName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductNumber]"
+                      dataType="wstr"
+                      length="25"
+                      name="ProductNumber" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductModelID]"
+                      dataType="i4"
+                      name="ProductModelID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      name="DiscontinuedDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                      dataType="i4"
+                      name="ProductCategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ThumbNailPhoto]"
+                      dataType="image"
+                      name="ThumbNailPhoto" />
+                    <externalMetadataColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output].ExternalColumns[ThumbnailPhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ThumbnailPhotoFileName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductNumber]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductNumber]"
+                      name="ProductNumber" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[StandardCost]"
+                      dataType="cy"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[StandardCost]"
+                      name="StandardCost" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Size]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Weight]"
+                      dataType="numeric"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                      name="ProductCategoryID" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductModelID]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ProductModelID]"
+                      name="ProductModelID" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[SellStartDate]"
+                      name="SellStartDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[SellEndDate]"
+                      name="SellEndDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[DiscontinuedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[DiscontinuedDate]"
+                      name="DiscontinuedDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ThumbNailPhoto]"
+                      dataType="image"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ThumbNailPhoto]"
+                      name="ThumbNailPhoto" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ThumbnailPhotoFileName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ThumbnailPhotoFileName]"
+                      name="ThumbnailPhotoFileName" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dft_Staging_StgProducts.Paths[Derived Column Output]"
+              endId="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\dft_Staging_StgProducts.Paths[OLE DB Source Output]"
+              endId="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\sql_DeleteCurrentLoadExecutionIdData"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{a2456f92-0625-41aa-9ad4-619962501277}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="sql_DeleteCurrentLoadExecutionIdData"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+          SQLTask:SqlStatementSource="DELETE FROM [Staging].[StgProduct] WHERE [LoadExecutionId] = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::LoadExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{70A28BDE-DF3B-4C1F-A12B-6EFCD8E10D51}"
+      DTS:From="Package\sql_DeleteCurrentLoadExecutionIdData"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\dft_Staging_StgProducts" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="263,42"
+          Id="Package\dft_Staging_StgProducts"
+          TopLeft="5.5,107.5" />
+        <NodeLayout
+          Size="263,42"
+          Id="Package\sql_DeleteCurrentLoadExecutionIdData"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="137,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dft_Staging_StgProducts">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="433.5,42"
+          Id="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct"
+          TopLeft="5.50000000000003,208.7" />
+        <NodeLayout
+          Size="433.5,42"
+          Id="Package\dft_Staging_StgProducts\ole_src_SalesLT_Product"
+          TopLeft="5.5,5.50000000000007" />
+        <NodeLayout
+          Size="433.5,42"
+          Id="Package\dft_Staging_StgProducts\der_LoadExecutionId_ProductName_ProductID_ProductNumber_Color_Size"
+          TopLeft="5.5,107.1" />
+        <EdgeLayout
+          Id="Package\dft_Staging_StgProducts.Paths[OLE DB Source Output]"
+          TopLeft="222.25,47.5000000000001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.5999999999999"
+              Start="0,0"
+              End="0,52.0999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.0999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dft_Staging_StgProducts.Paths[Derived Column Output]"
+          TopLeft="222.25,149.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.6"
+              Start="0,0"
+              End="0,52.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dft_Staging_StgProducts\ole_dst_Staging_StgProduct">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

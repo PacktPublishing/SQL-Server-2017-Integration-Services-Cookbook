@@ -1,0 +1,800 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2008 3:55:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="XP-VMW"
+  DTS:CreatorName="XP-VMW\Christian"
+  DTS:DTSID="{4CE06A9D-4754-474B-8034-DA0FDBE71A69}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1033"
+  DTS:MaxConcurrentExecutables="4"
+  DTS:ObjectName="EP_Staging"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="157"
+  DTS:VersionGUID="{3E719C60-4373-4A2F-981C-5A23D89A925C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{413CC245-C833-43F1-83D4-D327D673F286}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="SystemLog"
+      DTS:ObjectName="LoadExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="3">2</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,18,OnPipelineRowsSent</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\seqc_Dimensions"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C6BA1A7E-5E05-4805-977D-E8AB947A11AD}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="seqc_Dimensions">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgAddress"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{773A6BF9-0C3E-4313-BA97-90866241B240}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgAddress"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgAddress.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgCustomer"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{EE610BE4-545B-4317-BE02-EF9A76207617}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgCustomer"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgCustomer.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgCustomerAddress"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{65F07DA9-190B-458F-862B-B17EC1D992D0}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgCustomerAddress"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgCustomerAddress.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgProduct"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{8A0C8B3B-8B61-460A-B151-C78D293862AC}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgProduct"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgProduct.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgProductCategory"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{009D0F9B-18C4-4F48-B715-0A61D3D3A69C}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgProductCategory"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgProductCategory.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgProductDescription"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{609392C5-396D-4A0A-A078-1FD323CE6AE3}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgProductDescription"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgProductDescription.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgProductModel"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{FFB847B6-3387-4562-995B-A378F991AEB8}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgProductModel"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgProductModel.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Dimensions\ept_StgProductModelProductDescription"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{EA233B70-7233-472B-A283-388A19149064}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgProductModelProductDescription"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgProductModelProductDescription.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadID</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_Dimensions.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{9434E428-34AA-418D-A61A-2E3ACEC1DB6A}"
+          DTS:From="Package\seqc_Dimensions\ept_StgAddress"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\seqc_Dimensions\ept_StgCustomerAddress" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{AA196222-1344-40EC-9778-55CDDCFA9092}"
+          DTS:From="Package\seqc_Dimensions\ept_StgCustomer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\seqc_Dimensions\ept_StgCustomerAddress" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{348F4A99-3E32-4F62-8577-1AD0B2777C43}"
+          DTS:From="Package\seqc_Dimensions\ept_StgProductCategory"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\seqc_Dimensions\ept_StgProduct" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{AE8ED8C9-7500-4CD3-9D6E-32F3D6CBD181}"
+          DTS:From="Package\seqc_Dimensions\ept_StgProductDescription"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\seqc_Dimensions\ept_StgProduct" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{81CD8E8F-DCE6-4825-B753-B8182A1FB5F4}"
+          DTS:From="Package\seqc_Dimensions\ept_StgProductModel"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\seqc_Dimensions\ept_StgProduct" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{BF9D7B3D-379A-45F1-B1F3-75AB9BAFA1A3}"
+          DTS:From="Package\seqc_Dimensions\ept_StgProductModelProductDescription"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\seqc_Dimensions\ept_StgProduct" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\seqc_Facts"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2F9CB171-604C-4AE7-98F7-36DA4275EA3E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="seqc_Facts">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Facts\ept_StgSalesOrderDetail"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{6B823096-E18D-491D-9CFD-DCD7B5ABE0BB}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgSalesOrderDetail"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgSalesOrderDetail.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\seqc_Facts\ept_StgSalesOrderHeader"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{207F21E6-E3A6-43F1-ADE8-D0C38C416518}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="ept_StgSalesOrderHeader"
+          DTS:TaskContact="Executes DTS packages;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0" />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StgSalesOrderHeader.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>LoadExecutionId</ParameterName>
+                <BindedVariableOrParameterName>SystemLog::LoadExecutionId</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E1C5FFB2-04EF-414F-B5E5-F5AC8585CFDE}"
+      DTS:From="Package\seqc_Dimensions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\seqc_Facts" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPostExecute]"
+      DTS:CreationName="OnPostExecute"
+      DTS:DTSID="{842AF05D-0696-4E91-8F46-E7BB8DA1FB26}"
+      DTS:EventID="0"
+      DTS:EventName="OnPostExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{B52C4BA5-B846-4D9E-B2BE-5C02EE11F95C}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPostExecute]\sql_CloseLoadExecution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EA586157-BFFE-4611-8C62-DD81F7C636C8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_CloseLoadExecution"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+              SQLTask:SqlStatementSource="EXEC [SystemLog].[CloseLoadExecution] ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="SystemLog::LoadExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPreExecute]"
+      DTS:CreationName="OnPreExecute"
+      DTS:DTSID="{CAAAE0C3-4543-48CE-B62F-F49096776122}"
+      DTS:EventID="0"
+      DTS:EventName="OnPreExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{2E44A673-CEA9-496E-919A-D6BCE587D6CA}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPreExecute]\sql_OpenLoadExecution"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6AA89160-A9B9-46E4-966A-7531EEACEBBE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="sql_OpenLoadExecution">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+              SQLTask:SqlStatementSource="EXECUTE [SystemLog].[OpenLoadExecution] ?,?,? OUTPUT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::ServerExecutionID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="$Project::LoadId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="SystemLog::LoadExecutionId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\seqc_Dimensions\ept_StgAddress"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\seqc_Dimensions\ept_StgCustomer"
+          TopLeft="218.5,5.5" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\seqc_Dimensions\ept_StgCustomerAddress"
+          TopLeft="200,107.5" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\seqc_Dimensions\ept_StgProduct"
+          TopLeft="719,107.5" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\seqc_Dimensions\ept_StgProductCategory"
+          TopLeft="439,5.5" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\seqc_Dimensions\ept_StgProductDescription"
+          TopLeft="692.5,5.5" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\seqc_Dimensions\ept_StgProductModel"
+          TopLeft="957,5.49999999999989" />
+        <NodeLayout
+          Size="267,42"
+          Id="Package\seqc_Dimensions\ept_StgProductModelProductDescription"
+          TopLeft="1197,5.49999999999989" />
+        <EdgeLayout
+          Id="Package\seqc_Dimensions.PrecedenceConstraints[Constraint]"
+          TopLeft="81.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="185.5,60"
+              Start="0,0"
+              End="185.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7099697885196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7099697885196"
+                    Point2="0,35.7099697885196"
+                    Point3="4,35.7099697885196" />
+                  <mssgle:LineSegment
+                    End="181.5,35.7099697885196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="181.5,35.7099697885196"
+                    Point2="185.5,35.7099697885196"
+                    Point3="185.5,39.7099697885196" />
+                  <mssgle:LineSegment
+                    End="185.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 1]"
+          TopLeft="298.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.5,60"
+              Start="0,0"
+              End="31.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7099697885196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7099697885196"
+                    Point2="0,35.7099697885196"
+                    Point3="4,35.7099697885196" />
+                  <mssgle:LineSegment
+                    End="27.5,35.7099697885196" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.5,35.7099697885196"
+                    Point2="31.5,35.7099697885196"
+                    Point3="31.5,39.7099697885196" />
+                  <mssgle:LineSegment
+                    End="31.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 2]"
+          TopLeft="535.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="216.1,60"
+              Start="0,0"
+              End="216.1,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.9056429232192" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.9056429232192"
+                    Point2="0,41.9056429232192"
+                    Point3="4,41.9056429232192" />
+                  <mssgle:LineSegment
+                    End="212.1,41.9056429232192" />
+                  <mssgle:CubicBezierSegment
+                    Point1="212.1,41.9056429232192"
+                    Point2="216.1,41.9056429232192"
+                    Point3="216.1,45.9056429232192" />
+                  <mssgle:LineSegment
+                    End="216.1,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 3]"
+          TopLeft="794.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.3,60"
+              Start="0,0"
+              End="-14.3,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.138258961229" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.138258961229"
+                    Point2="0,33.138258961229"
+                    Point3="-4,33.138258961229" />
+                  <mssgle:LineSegment
+                    End="-10.3,33.138258961229" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.3,33.138258961229"
+                    Point2="-14.3,33.138258961229"
+                    Point3="-14.3,37.138258961229" />
+                  <mssgle:LineSegment
+                    End="-14.3,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 4]"
+          TopLeft="1046.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-237.7,60.0000000000001"
+              Start="0,0"
+              End="-237.7,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.138258961229" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.138258961229"
+                    Point2="0,33.138258961229"
+                    Point3="-4,33.138258961229" />
+                  <mssgle:LineSegment
+                    End="-233.7,33.138258961229" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-233.7,33.138258961229"
+                    Point2="-237.7,33.138258961229"
+                    Point3="-237.7,37.138258961229" />
+                  <mssgle:LineSegment
+                    End="-237.7,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\seqc_Dimensions.PrecedenceConstraints[Constraint 5]"
+          TopLeft="1330.5,47.4999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-493.1,60.0000000000001"
+              Start="0,0"
+              End="-493.1,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.9056429232193" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.9056429232193"
+                    Point2="0,41.9056429232193"
+                    Point3="-4,41.9056429232193" />
+                  <mssgle:LineSegment
+                    End="-489.1,41.9056429232193" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-489.1,41.9056429232193"
+                    Point2="-493.1,41.9056429232193"
+                    Point3="-493.1,45.9056429232193" />
+                  <mssgle:LineSegment
+                    End="-493.1,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1470,204"
+          Size="1470,248"
+          Id="Package\seqc_Dimensions"
+          TopLeft="76.5,123.5" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\seqc_Facts\ept_StgSalesOrderDetail"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\seqc_Facts\ept_StgSalesOrderHeader"
+          TopLeft="259,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="464,102"
+          Size="464,146"
+          Id="Package\seqc_Facts"
+          TopLeft="579.5,431.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="811.5,371.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="191,42"
+          Id="Package.EventHandlers[OnPostExecute]\sql_CloseLoadExecution"
+          TopLeft="381.5,107.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="191,42"
+          Id="Package.EventHandlers[OnPreExecute]\sql_OpenLoadExecution"
+          TopLeft="378,186" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

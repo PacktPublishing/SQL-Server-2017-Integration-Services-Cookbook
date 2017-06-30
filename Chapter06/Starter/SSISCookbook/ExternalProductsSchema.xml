@@ -1,0 +1,1255 @@
+﻿<Products>
+  <xsd:schema targetNamespace="urn:schemas-microsoft-com:sql:SqlRowSet1" xmlns:schema="urn:schemas-microsoft-com:sql:SqlRowSet1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sqltypes="http://schemas.microsoft.com/sqlserver/2004/sqltypes" elementFormDefault="qualified">
+    <xsd:import namespace="http://schemas.microsoft.com/sqlserver/2004/sqltypes" schemaLocation="http://schemas.microsoft.com/sqlserver/2004/sqltypes/sqltypes.xsd" />
+    <xsd:element name="Product">
+      <xsd:complexType>
+        <xsd:sequence>
+          <xsd:element name="ProductID" type="sqltypes:int" />
+          <xsd:element name="ProductNumber">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="25" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Color" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="15" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="StandardCost" type="sqltypes:money" />
+          <xsd:element name="ListPrice" type="sqltypes:money" />
+          <xsd:element name="Size" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="5" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="SizeUnitMeasureCode" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="3" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="WeightUnitMeasureCode" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="3" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Weight" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:decimal">
+                <xsd:totalDigits value="8" />
+                <xsd:fractionDigits value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Class" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="Style" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="DaysToManufacture" type="sqltypes:int" />
+          <xsd:element name="ProductLine" minOccurs="0">
+            <xsd:simpleType>
+              <xsd:restriction base="sqltypes:nchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="2" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="DateModified" type="sqltypes:datetime" />
+          <xsd:element name="Name">
+            <xsd:simpleType sqltypes:sqlTypeAlias="[AdventureWorks].[dbo].[Name]">
+              <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="50" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element ref="schema:SubCategory" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="SubCategory">
+      <xsd:complexType>
+        <xsd:sequence>
+          <xsd:element name="SubCategoryName">
+            <xsd:simpleType sqltypes:sqlTypeAlias="[AdventureWorks].[dbo].[Name]">
+              <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="50" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element ref="schema:Category" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Category">
+      <xsd:complexType>
+        <xsd:sequence>
+          <xsd:element name="CategoryName">
+            <xsd:simpleType sqltypes:sqlTypeAlias="[AdventureWorks].[dbo].[Name]">
+              <xsd:restriction base="sqltypes:nvarchar" sqltypes:localeId="1033" sqltypes:sqlCompareOptions="IgnoreCase IgnoreKanaType IgnoreWidth" sqltypes:sqlSortId="52">
+                <xsd:maxLength value="50" />
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>707</ProductID>
+    <ProductNumber>HL-U509-R</ProductNumber>
+    <Color>Red</Color>
+    <StandardCost>13.0863</StandardCost>
+    <ListPrice>34.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Sport-100 Helmet, Red</Name>
+    <SubCategory>
+      <SubCategoryName>Helmets</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>708</ProductID>
+    <ProductNumber>HL-U509</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>13.0863</StandardCost>
+    <ListPrice>34.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Sport-100 Helmet, Black</Name>
+    <SubCategory>
+      <SubCategoryName>Helmets</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>709</ProductID>
+    <ProductNumber>SO-B909-M</ProductNumber>
+    <Color>White</Color>
+    <StandardCost>3.3963</StandardCost>
+    <ListPrice>9.5000</ListPrice>
+    <Size>M</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Mountain Bike Socks, M</Name>
+    <SubCategory>
+      <SubCategoryName>Socks</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>710</ProductID>
+    <ProductNumber>SO-B909-L</ProductNumber>
+    <Color>White</Color>
+    <StandardCost>3.3963</StandardCost>
+    <ListPrice>9.5000</ListPrice>
+    <Size>L</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Mountain Bike Socks, L</Name>
+    <SubCategory>
+      <SubCategoryName>Socks</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>711</ProductID>
+    <ProductNumber>HL-U509-B</ProductNumber>
+    <Color>Blue</Color>
+    <StandardCost>13.0863</StandardCost>
+    <ListPrice>34.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Sport-100 Helmet, Blue</Name>
+    <SubCategory>
+      <SubCategoryName>Helmets</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>712</ProductID>
+    <ProductNumber>CA-1098</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>6.9223</StandardCost>
+    <ListPrice>8.9900</ListPrice>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>AWC Logo Cap</Name>
+    <SubCategory>
+      <SubCategoryName>Caps</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>713</ProductID>
+    <ProductNumber>LJ-0192-S</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>38.4923</StandardCost>
+    <ListPrice>49.9900</ListPrice>
+    <Size>S</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Long-Sleeve Logo Jersey, S</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>714</ProductID>
+    <ProductNumber>LJ-0192-M</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>38.4923</StandardCost>
+    <ListPrice>49.9900</ListPrice>
+    <Size>M</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Long-Sleeve Logo Jersey, M</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>715</ProductID>
+    <ProductNumber>LJ-0192-L</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>38.4923</StandardCost>
+    <ListPrice>49.9900</ListPrice>
+    <Size>L</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Long-Sleeve Logo Jersey, L</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>716</ProductID>
+    <ProductNumber>LJ-0192-X</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>38.4923</StandardCost>
+    <ListPrice>49.9900</ListPrice>
+    <Size>XL</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Long-Sleeve Logo Jersey, XL</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>841</ProductID>
+    <ProductNumber>SH-M897-S</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>24.7459</StandardCost>
+    <ListPrice>59.9900</ListPrice>
+    <Size>S</Size>
+    <Style>M </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Men's Sports Shorts, S</Name>
+    <SubCategory>
+      <SubCategoryName>Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>842</ProductID>
+    <ProductNumber>PA-T100</ProductNumber>
+    <Color>Grey</Color>
+    <StandardCost>51.5625</StandardCost>
+    <ListPrice>125.0000</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>T </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Touring-Panniers, Large</Name>
+    <SubCategory>
+      <SubCategoryName>Panniers</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>843</ProductID>
+    <ProductNumber>LO-C100</ProductNumber>
+    <StandardCost>10.3125</StandardCost>
+    <ListPrice>25.0000</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Cable Lock</Name>
+    <SubCategory>
+      <SubCategoryName>Locks</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>844</ProductID>
+    <ProductNumber>PU-0452</ProductNumber>
+    <StandardCost>8.2459</StandardCost>
+    <ListPrice>19.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Minipump</Name>
+    <SubCategory>
+      <SubCategoryName>Pumps</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>845</ProductID>
+    <ProductNumber>PU-M044</ProductNumber>
+    <StandardCost>10.3084</StandardCost>
+    <ListPrice>24.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Mountain Pump</Name>
+    <SubCategory>
+      <SubCategoryName>Pumps</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>846</ProductID>
+    <ProductNumber>LT-T990</ProductNumber>
+    <StandardCost>5.7709</StandardCost>
+    <ListPrice>13.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Taillights - Battery-Powered</Name>
+    <SubCategory>
+      <SubCategoryName>Lights</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>847</ProductID>
+    <ProductNumber>LT-H902</ProductNumber>
+    <StandardCost>14.4334</StandardCost>
+    <ListPrice>34.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Headlights - Dual-Beam</Name>
+    <SubCategory>
+      <SubCategoryName>Lights</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>848</ProductID>
+    <ProductNumber>LT-H903</ProductNumber>
+    <StandardCost>18.5584</StandardCost>
+    <ListPrice>44.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Headlights - Weatherproof</Name>
+    <SubCategory>
+      <SubCategoryName>Lights</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>849</ProductID>
+    <ProductNumber>SH-M897-M</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>24.7459</StandardCost>
+    <ListPrice>59.9900</ListPrice>
+    <Size>M</Size>
+    <Style>M </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Men's Sports Shorts, M</Name>
+    <SubCategory>
+      <SubCategoryName>Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>850</ProductID>
+    <ProductNumber>SH-M897-L</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>24.7459</StandardCost>
+    <ListPrice>59.9900</ListPrice>
+    <Size>L</Size>
+    <Style>M </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Men's Sports Shorts, L</Name>
+    <SubCategory>
+      <SubCategoryName>Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>851</ProductID>
+    <ProductNumber>SH-M897-X</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>24.7459</StandardCost>
+    <ListPrice>59.9900</ListPrice>
+    <Size>XL</Size>
+    <Style>M </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Men's Sports Shorts, XL</Name>
+    <SubCategory>
+      <SubCategoryName>Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>852</ProductID>
+    <ProductNumber>TG-W091-S</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>30.9334</StandardCost>
+    <ListPrice>74.9900</ListPrice>
+    <Size>S</Size>
+    <Style>W </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Women's Tights, S</Name>
+    <SubCategory>
+      <SubCategoryName>Tights</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>853</ProductID>
+    <ProductNumber>TG-W091-M</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>30.9334</StandardCost>
+    <ListPrice>74.9900</ListPrice>
+    <Size>M</Size>
+    <Style>W </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Women's Tights, M</Name>
+    <SubCategory>
+      <SubCategoryName>Tights</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>854</ProductID>
+    <ProductNumber>TG-W091-L</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>30.9334</StandardCost>
+    <ListPrice>74.9900</ListPrice>
+    <Size>L</Size>
+    <Style>W </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Women's Tights, L</Name>
+    <SubCategory>
+      <SubCategoryName>Tights</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>855</ProductID>
+    <ProductNumber>SB-M891-S</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>37.1209</StandardCost>
+    <ListPrice>89.9900</ListPrice>
+    <Size>S</Size>
+    <Style>M </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Men's Bib-Shorts, S</Name>
+    <SubCategory>
+      <SubCategoryName>Bib-Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>856</ProductID>
+    <ProductNumber>SB-M891-M</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>37.1209</StandardCost>
+    <ListPrice>89.9900</ListPrice>
+    <Size>M</Size>
+    <Style>M </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Men's Bib-Shorts, M</Name>
+    <SubCategory>
+      <SubCategoryName>Bib-Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>857</ProductID>
+    <ProductNumber>SB-M891-L</ProductNumber>
+    <Color>Multi</Color>
+    <StandardCost>37.1209</StandardCost>
+    <ListPrice>89.9900</ListPrice>
+    <Size>L</Size>
+    <Style>M </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Men's Bib-Shorts, L</Name>
+    <SubCategory>
+      <SubCategoryName>Bib-Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>858</ProductID>
+    <ProductNumber>GL-H102-S</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>9.1593</StandardCost>
+    <ListPrice>24.4900</ListPrice>
+    <Size>S</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Half-Finger Gloves, S</Name>
+    <SubCategory>
+      <SubCategoryName>Gloves</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>859</ProductID>
+    <ProductNumber>GL-H102-M</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>9.1593</StandardCost>
+    <ListPrice>24.4900</ListPrice>
+    <Size>M</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Half-Finger Gloves, M</Name>
+    <SubCategory>
+      <SubCategoryName>Gloves</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>860</ProductID>
+    <ProductNumber>GL-H102-L</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>9.1593</StandardCost>
+    <ListPrice>24.4900</ListPrice>
+    <Size>L</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Half-Finger Gloves, L</Name>
+    <SubCategory>
+      <SubCategoryName>Gloves</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>861</ProductID>
+    <ProductNumber>GL-F110-S</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>15.6709</StandardCost>
+    <ListPrice>37.9900</ListPrice>
+    <Size>S</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Full-Finger Gloves, S</Name>
+    <SubCategory>
+      <SubCategoryName>Gloves</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>862</ProductID>
+    <ProductNumber>GL-F110-M</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>15.6709</StandardCost>
+    <ListPrice>37.9900</ListPrice>
+    <Size>M</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Full-Finger Gloves, M</Name>
+    <SubCategory>
+      <SubCategoryName>Gloves</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>863</ProductID>
+    <ProductNumber>GL-F110-L</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>15.6709</StandardCost>
+    <ListPrice>37.9900</ListPrice>
+    <Size>L</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Full-Finger Gloves, L</Name>
+    <SubCategory>
+      <SubCategoryName>Gloves</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>864</ProductID>
+    <ProductNumber>VE-C304-S</ProductNumber>
+    <Color>Blue</Color>
+    <StandardCost>23.7490</StandardCost>
+    <ListPrice>63.5000</ListPrice>
+    <Size>S</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Classic Vest, S</Name>
+    <SubCategory>
+      <SubCategoryName>Vests</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>865</ProductID>
+    <ProductNumber>VE-C304-M</ProductNumber>
+    <Color>Blue</Color>
+    <StandardCost>23.7490</StandardCost>
+    <ListPrice>63.5000</ListPrice>
+    <Size>M</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Classic Vest, M</Name>
+    <SubCategory>
+      <SubCategoryName>Vests</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>866</ProductID>
+    <ProductNumber>VE-C304-L</ProductNumber>
+    <Color>Blue</Color>
+    <StandardCost>23.7490</StandardCost>
+    <ListPrice>63.5000</ListPrice>
+    <Size>L</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Classic Vest, L</Name>
+    <SubCategory>
+      <SubCategoryName>Vests</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>867</ProductID>
+    <ProductNumber>SH-W890-S</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>26.1763</StandardCost>
+    <ListPrice>69.9900</ListPrice>
+    <Size>S</Size>
+    <Style>W </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Women's Mountain Shorts, S</Name>
+    <SubCategory>
+      <SubCategoryName>Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>868</ProductID>
+    <ProductNumber>SH-W890-M</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>26.1763</StandardCost>
+    <ListPrice>69.9900</ListPrice>
+    <Size>M</Size>
+    <Style>W </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Women's Mountain Shorts, M</Name>
+    <SubCategory>
+      <SubCategoryName>Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>869</ProductID>
+    <ProductNumber>SH-W890-L</ProductNumber>
+    <Color>Black</Color>
+    <StandardCost>26.1763</StandardCost>
+    <ListPrice>69.9900</ListPrice>
+    <Size>L</Size>
+    <Style>W </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Women's Mountain Shorts, L</Name>
+    <SubCategory>
+      <SubCategoryName>Shorts</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>870</ProductID>
+    <ProductNumber>WB-H098</ProductNumber>
+    <StandardCost>1.8663</StandardCost>
+    <ListPrice>4.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Water Bottle - 30 oz.</Name>
+    <SubCategory>
+      <SubCategoryName>Bottles and Cages</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>871</ProductID>
+    <ProductNumber>BC-M005</ProductNumber>
+    <StandardCost>3.7363</StandardCost>
+    <ListPrice>9.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Mountain Bottle Cage</Name>
+    <SubCategory>
+      <SubCategoryName>Bottles and Cages</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>872</ProductID>
+    <ProductNumber>BC-R205</ProductNumber>
+    <StandardCost>3.3623</StandardCost>
+    <ListPrice>8.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Road Bottle Cage</Name>
+    <SubCategory>
+      <SubCategoryName>Bottles and Cages</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>873</ProductID>
+    <ProductNumber>PK-7098</ProductNumber>
+    <StandardCost>0.8565</StandardCost>
+    <ListPrice>2.2900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Patch Kit/8 Patches</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>874</ProductID>
+    <ProductNumber>SO-R809-M</ProductNumber>
+    <Color>White</Color>
+    <StandardCost>3.3623</StandardCost>
+    <ListPrice>8.9900</ListPrice>
+    <Size>M</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Racing Socks, M</Name>
+    <SubCategory>
+      <SubCategoryName>Socks</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>875</ProductID>
+    <ProductNumber>SO-R809-L</ProductNumber>
+    <Color>White</Color>
+    <StandardCost>3.3623</StandardCost>
+    <ListPrice>8.9900</ListPrice>
+    <Size>L</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Racing Socks, L</Name>
+    <SubCategory>
+      <SubCategoryName>Socks</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>876</ProductID>
+    <ProductNumber>RA-H123</ProductNumber>
+    <StandardCost>44.8800</StandardCost>
+    <ListPrice>120.0000</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Hitch Rack - 4-Bike</Name>
+    <SubCategory>
+      <SubCategoryName>Bike Racks</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>877</ProductID>
+    <ProductNumber>CL-9009</ProductNumber>
+    <StandardCost>2.9733</StandardCost>
+    <ListPrice>7.9500</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Bike Wash - Dissolver</Name>
+    <SubCategory>
+      <SubCategoryName>Cleaners</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>878</ProductID>
+    <ProductNumber>FE-6654</ProductNumber>
+    <StandardCost>8.2205</StandardCost>
+    <ListPrice>21.9800</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Fender Set - Mountain</Name>
+    <SubCategory>
+      <SubCategoryName>Fenders</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>879</ProductID>
+    <ProductNumber>ST-1401</ProductNumber>
+    <StandardCost>59.4660</StandardCost>
+    <ListPrice>159.0000</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>All-Purpose Bike Stand</Name>
+    <SubCategory>
+      <SubCategoryName>Bike Stands</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>880</ProductID>
+    <ProductNumber>HY-1023-70</ProductNumber>
+    <Color>Silver</Color>
+    <StandardCost>20.5663</StandardCost>
+    <ListPrice>54.9900</ListPrice>
+    <Size>70</Size>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Hydration Pack - 70 oz.</Name>
+    <SubCategory>
+      <SubCategoryName>Hydration Packs</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>881</ProductID>
+    <ProductNumber>SJ-0194-S</ProductNumber>
+    <Color>Yellow</Color>
+    <StandardCost>41.5723</StandardCost>
+    <ListPrice>53.9900</ListPrice>
+    <Size>S</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Short-Sleeve Classic Jersey, S</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>882</ProductID>
+    <ProductNumber>SJ-0194-M</ProductNumber>
+    <Color>Yellow</Color>
+    <StandardCost>41.5723</StandardCost>
+    <ListPrice>53.9900</ListPrice>
+    <Size>M</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Short-Sleeve Classic Jersey, M</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>883</ProductID>
+    <ProductNumber>SJ-0194-L</ProductNumber>
+    <Color>Yellow</Color>
+    <StandardCost>41.5723</StandardCost>
+    <ListPrice>53.9900</ListPrice>
+    <Size>L</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Short-Sleeve Classic Jersey, L</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>884</ProductID>
+    <ProductNumber>SJ-0194-X</ProductNumber>
+    <Color>Yellow</Color>
+    <StandardCost>41.5723</StandardCost>
+    <ListPrice>53.9900</ListPrice>
+    <Size>XL</Size>
+    <Style>U </Style>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>S </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Short-Sleeve Classic Jersey, XL</Name>
+    <SubCategory>
+      <SubCategoryName>Jerseys</SubCategoryName>
+      <Category>
+        <CategoryName>Clothing</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>921</ProductID>
+    <ProductNumber>TT-M928</ProductNumber>
+    <StandardCost>1.8663</StandardCost>
+    <ListPrice>4.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Mountain Tire Tube</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>922</ProductID>
+    <ProductNumber>TT-R982</ProductNumber>
+    <StandardCost>1.4923</StandardCost>
+    <ListPrice>3.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Road Tire Tube</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>923</ProductID>
+    <ProductNumber>TT-T092</ProductNumber>
+    <StandardCost>1.8663</StandardCost>
+    <ListPrice>4.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>T </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Touring Tire Tube</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>928</ProductID>
+    <ProductNumber>TI-M267</ProductNumber>
+    <StandardCost>9.3463</StandardCost>
+    <ListPrice>24.9900</ListPrice>
+    <Class>L </Class>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>LL Mountain Tire</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>929</ProductID>
+    <ProductNumber>TI-M602</ProductNumber>
+    <StandardCost>11.2163</StandardCost>
+    <ListPrice>29.9900</ListPrice>
+    <Class>M </Class>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>ML Mountain Tire</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>930</ProductID>
+    <ProductNumber>TI-M823</ProductNumber>
+    <StandardCost>13.0900</StandardCost>
+    <ListPrice>35.0000</ListPrice>
+    <Class>H </Class>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>M </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>HL Mountain Tire</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>931</ProductID>
+    <ProductNumber>TI-R092</ProductNumber>
+    <StandardCost>8.0373</StandardCost>
+    <ListPrice>21.4900</ListPrice>
+    <Class>L </Class>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>LL Road Tire</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>932</ProductID>
+    <ProductNumber>TI-R628</ProductNumber>
+    <StandardCost>9.3463</StandardCost>
+    <ListPrice>24.9900</ListPrice>
+    <Class>M </Class>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>ML Road Tire</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>933</ProductID>
+    <ProductNumber>TI-R982</ProductNumber>
+    <StandardCost>12.1924</StandardCost>
+    <ListPrice>32.6000</ListPrice>
+    <Class>H </Class>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>R </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>HL Road Tire</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+  <Product xmlns="urn:schemas-microsoft-com:sql:SqlRowSet1">
+    <ProductID>934</ProductID>
+    <ProductNumber>TI-T723</ProductNumber>
+    <StandardCost>10.8423</StandardCost>
+    <ListPrice>28.9900</ListPrice>
+    <DaysToManufacture>0</DaysToManufacture>
+    <ProductLine>T </ProductLine>
+    <DateModified>2008-05-16T18:07:56.830</DateModified>
+    <Name>Touring Tire</Name>
+    <SubCategory>
+      <SubCategoryName>Tires and Tubes</SubCategoryName>
+      <Category>
+        <CategoryName>Accessories</CategoryName>
+      </Category>
+    </SubCategory>
+  </Product>
+</Products>

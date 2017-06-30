@@ -1,0 +1,1526 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/27/2017 7:04:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DS130"
+  DTS:CreatorName="DS130\ML"
+  DTS:DTSID="{C1260571-5128-4783-ACF0-5A394769E9B7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0500.272"
+  DTS:LocaleID="1060"
+  DTS:ObjectName="LookupCache"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{517F14D7-8CDA-4084-83D0-A32E94E41EE6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{25BA1AB6-6CD3-4756-B825-F73689CC7A27}"
+      DTS:ObjectName="cmgr_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorksLTDW2016;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_Reference]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{30fb504f-4279-4dd0-ae52-e32c918fda74}"
+      DTS:ObjectName="cmgr_Reference">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorks2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_Source]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{278CFE86-7E15-4D6C-8FD3-1B4F67CBE55C}"
+      DTS:ObjectName="cmgr_Source">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorksLT;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[cmgr_SourceFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{9B386809-68A0-4AC5-A733-F44FE7004DFA}"
+      DTS:ObjectName="cmgr_SourceFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::currentFileName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1060"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1250"
+          DTS:ConnectionString="C:\SSIS2016Cookbook\Chapter06\Files\Clients.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="256"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ClientName"
+              DTS:DTSID="{A51DB0AD-3C09-4B45-9B24-A876B9F1E94C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PersonCache]"
+      DTS:CreationName="CACHE"
+      DTS:DTSID="{DEF836F1-5041-4BE4-B709-BDB8589C06E6}"
+      DTS:ObjectName="PersonCache">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager>
+          <DTS:CacheColumns>
+            <DTS:CacheColumn
+              DTS:DataType="130"
+              DTS:Length="256"
+              DTS:IndexPosition="1"
+              DTS:ObjectName="ClientName"
+              DTS:DTSID="{034BF644-A255-41DD-8301-AEF767CDF552}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="3"
+              DTS:ObjectName="BusinessEntityID"
+              DTS:DTSID="{6854BB8D-1816-40A8-A03D-9D5A9E216575}"
+              DTS:CreationName="" />
+            <DTS:CacheColumn
+              DTS:DataType="11"
+              DTS:ObjectName="IsPerson"
+              DTS:DTSID="{B87A0FE4-4BBA-4478-ACB4-E6EF9D77BEC6}"
+              DTS:CreationName="" />
+          </DTS:CacheColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{34255346-FF07-43CC-B671-851A7EB4FD57}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="currentFileName">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\SSIS2016Cookbook\Chapter06\Files\Clients.csv</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach File"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{BC6D85CE-81B5-4F57-93A8-46CFCB1E1326}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach File">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{B21D3939-1BDF-4263-9513-170D1CACAEF9}"
+        DTS:ObjectName="{B21D3939-1BDF-4263-9513-170D1CACAEF9}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\SSIS2016Cookbook\Chapter06\Files" />
+            <FEFEProperty
+              FileSpec="Clients_*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach File\Resolve Client Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{253b327c-421b-461e-a2db-ded896a6aba5}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Resolve Client Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach File\Resolve Client Data\Company Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Company Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(Vendor.Name AS NVARCHAR(256)) AS ClientName
+       ,Vendor.BusinessEntityID AS BusinessEntityID
+	   ,CAST(0 AS BIT) AS IsPerson
+  FROM Purchasing.Vendor;</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST(Vendor.Name AS NVARCHAR(256)) AS ClientName
+       ,Vendor.BusinessEntityID AS BusinessEntityID
+	   ,CAST(0 AS BIT) AS IsPerson
+  FROM Purchasing.Vendor;) [refTable]
+where [refTable].[ClientName] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClientName" dataType="DT_WSTR" length="256" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BusinessEntityID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsPerson" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File\Resolve Client Data\Company Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[cmgr_Reference]"
+                      connectionManagerRefId="Package.ConnectionManagers[cmgr_Reference]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File\Resolve Client Data\Company Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Company Lookup.Inputs[Lookup Input].Columns[ClientName]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="ClientName"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ClientName</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Foreach File\Resolve Client Data\Company Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">BusinessEntityID</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output].Columns[IsPerson]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output].Columns[IsPerson]"
+                          name="IsPerson"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">IsPerson</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Foreach File\Resolve Client Data\Company Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Foreach File\Resolve Client Data\Company Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File\Resolve Client Data\Person Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Person Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(Person.LastName + COALESCE(N' ' + Person.MiddleName, N'') + N', ' + Person.FirstName AS NVARCHAR(256)) as ClientName
+       ,Person.BusinessEntityID AS BusinessEntityID
+	   ,CAST(1 AS BIT) AS IsPerson
+  FROM Person.Person;</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT CAST(Person.LastName + COALESCE(N' ' + Person.MiddleName, N'') + N', ' + Person.FirstName AS NVARCHAR(256)) as ClientName
+       ,Person.BusinessEntityID AS BusinessEntityID
+	   ,CAST(1 AS BIT) AS IsPerson
+  FROM Person.Person;) [refTable]
+where [refTable].[ClientName] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClientName" dataType="DT_WSTR" length="256" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BusinessEntityID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsPerson" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File\Resolve Client Data\Person Lookup.Connections[CacheConnection]"
+                      connectionManagerID="Package.ConnectionManagers[PersonCache]"
+                      connectionManagerRefId="Package.ConnectionManagers[PersonCache]"
+                      description="Connection manager used to access lookup data."
+                      name="CacheConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File\Resolve Client Data\Person Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Person Lookup.Inputs[Lookup Input].Columns[ClientName]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="ClientName"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ClientName</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Foreach File\Resolve Client Data\Person Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">BusinessEntityID</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output].Columns[IsPerson]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output].Columns[IsPerson]"
+                          name="IsPerson"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">IsPerson</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Foreach File\Resolve Client Data\Person Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Foreach File\Resolve Client Data\Person Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File\Resolve Client Data\Resolved Client"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Resolved Client"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ResolvedClient]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File\Resolve Client Data\Resolved Client.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[cmgr_Reference]"
+                      connectionManagerRefId="Package.ConnectionManagers[cmgr_Reference]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].Columns[ClientName]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="ClientName"
+                          externalMetadataColumnId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientName]"
+                          lineageId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[ClientName]" />
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].Columns[IsPerson]"
+                          cachedDataType="bool"
+                          cachedName="IsPerson"
+                          externalMetadataColumnId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].ExternalColumns[IsPerson]"
+                          lineageId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[IsPerson]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].ExternalColumns[ClientName]"
+                          dataType="wstr"
+                          length="256"
+                          name="ClientName" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input].ExternalColumns[IsPerson]"
+                          dataType="bool"
+                          name="IsPerson" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Resolved Client.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Resolved Client.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Resolved Client.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Resolved Client.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File\Resolve Client Data\Source Client Data"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1060"
+                  name="Source Client Data"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach File\Resolve Client Data\Source Client Data.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[cmgr_SourceFile]"
+                      connectionManagerRefId="Package.ConnectionManagers[cmgr_SourceFile]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].ExternalColumns[ClientName]"
+                          length="256"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]"
+                          name="ClientName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].ExternalColumns[ClientName]"
+                          dataType="wstr"
+                          length="256"
+                          name="ClientName" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          dataType="nText"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach File\Resolve Client Data\Union All"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 1].Columns[ClientName]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="ClientName"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[ClientName]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 1].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          lineageId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output].Columns[BusinessEntityID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 1].Columns[IsPerson]"
+                          cachedDataType="bool"
+                          cachedName="IsPerson"
+                          lineageId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output].Columns[IsPerson]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[IsPerson]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 2].Columns[ClientName]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="ClientName"
+                          lineageId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output].Columns[ClientName]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[ClientName]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 2].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          lineageId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output].Columns[BusinessEntityID]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 2].Columns[IsPerson]"
+                          cachedDataType="bool"
+                          cachedName="IsPerson"
+                          lineageId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output].Columns[IsPerson]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[IsPerson]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 3]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[ClientName]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[ClientName]"
+                          name="ClientName" />
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[IsPerson]"
+                          dataType="bool"
+                          lineageId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1].Columns[IsPerson]"
+                          name="IsPerson" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach File\Resolve Client Data.Paths[Flat File Source Output]"
+                  endId="Package\Foreach File\Resolve Client Data\Person Lookup.Inputs[Lookup Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach File\Resolve Client Data\Source Client Data.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\Foreach File\Resolve Client Data.Paths[Lookup Match Output]"
+                  endId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 1]"
+                  name="Lookup Match Output"
+                  startId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Foreach File\Resolve Client Data.Paths[Lookup Match Output1]"
+                  endId="Package\Foreach File\Resolve Client Data\Union All.Inputs[Union All Input 2]"
+                  name="Lookup Match Output"
+                  startId="Package\Foreach File\Resolve Client Data\Company Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Foreach File\Resolve Client Data.Paths[Lookup No Match Output]"
+                  endId="Package\Foreach File\Resolve Client Data\Company Lookup.Inputs[Lookup Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\Foreach File\Resolve Client Data\Person Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Foreach File\Resolve Client Data.Paths[Union All Output 1]"
+                  endId="Package\Foreach File\Resolve Client Data\Resolved Client.Inputs[OLE DB Destination Input]"
+                  name="Union All Output 1"
+                  startId="Package\Foreach File\Resolve Client Data\Union All.Outputs[Union All Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{C2C4D784-FB32-4370-9AE8-07D5B0E132A1}"
+          DTS:ObjectName="{C2C4D784-FB32-4370-9AE8-07D5B0E132A1}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::currentFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Person Cache"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0FC7D903-13A8-443B-9CC5-2A7E67DAA724}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Person Cache"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Person Cache\Person Cache"
+              componentClassID="Microsoft.Cache"
+              contactInfo="Cache Transform;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Writes data to a cache (a .caw file) with the Cache Connection Manager. Reuse the cache between multiple Lookup transforms to reduce database load. Share the cache to reduce memory usage. Note: cache data is stored in clear text and not recommended for sensitive data."
+              name="Person Cache"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Person Cache\Person Cache.Connections[CacheConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PersonCache]"
+                  connectionManagerRefId="Package.ConnectionManagers[PersonCache]"
+                  description="The connection used to access the cache."
+                  name="CacheConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Person Cache\Person Cache.Inputs[Cache Input]"
+                  hasSideEffects="true"
+                  name="Cache Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Person Cache\Person Cache.Inputs[Cache Input].Columns[ClientName]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="ClientName"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[ClientName]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">ClientName</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Person Cache\Person Cache.Inputs[Cache Input].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[BusinessEntityID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">BusinessEntityID</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Person Cache\Person Cache.Inputs[Cache Input].Columns[IsPerson]"
+                      cachedDataType="bool"
+                      cachedName="IsPerson"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[IsPerson]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The cache column associated with the input column."
+                          name="CacheColumnName">IsPerson</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Person Cache\Person Cache.Outputs[Cache Output]"
+                  name="Cache Output"
+                  synchronousInputId="Package\Load Person Cache\Person Cache.Inputs[Cache Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Person Cache\Person Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Person Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST(Person.LastName + COALESCE(N' ' + Person.MiddleName, N'') + N', ' + Person.FirstName AS NVARCHAR(256)) as ClientName
+       ,Person.BusinessEntityID AS BusinessEntityID
+	   ,CAST(1 AS BIT) AS IsPerson
+  FROM Person.Person;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Person Cache\Person Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[cmgr_Reference]"
+                  connectionManagerRefId="Package.ConnectionManagers[cmgr_Reference]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[ClientName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].ExternalColumns[ClientName]"
+                      length="256"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[ClientName]"
+                      name="ClientName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[IsPerson]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].ExternalColumns[IsPerson]"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].Columns[IsPerson]"
+                      name="IsPerson"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].ExternalColumns[ClientName]"
+                      dataType="wstr"
+                      length="256"
+                      name="ClientName" />
+                    <externalMetadataColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output].ExternalColumns[IsPerson]"
+                      dataType="bool"
+                      name="IsPerson" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[ClientName]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[ClientName]"
+                      name="ClientName" />
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[IsPerson]"
+                      dataType="bool"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[IsPerson]"
+                      name="IsPerson" />
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Person Cache.Paths[OLE DB Source Output]"
+              endId="Package\Load Person Cache\Person Cache.Inputs[Cache Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load Person Cache\Person Data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Resolved Client"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f5babdb7-06f5-4ff0-b5db-31ed631ba6c3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Resolved Client"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server vNext CTP2.0; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{30fb504f-4279-4dd0-ae52-e32c918fda74}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.ResolvedClient;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C657A59F-FE9A-4920-AAB4-98AE2745DADF}"
+      DTS:From="Package\Truncate Resolved Client"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load Person Cache" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B338F3DA-8FE4-41D0-98A9-AB4456FE9136}"
+      DTS:From="Package\Load Person Cache"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Foreach File" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Foreach File\Resolve Client Data"
+          TopLeft="5.5,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="181,103"
+          Size="181,146"
+          Id="Package\Foreach File"
+          TopLeft="13,209.5" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Load Person Cache"
+          TopLeft="19,107.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Truncate Resolved Client"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="103.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="103.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach File\Resolve Client Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Foreach File\Resolve Client Data\Person Lookup"
+          TopLeft="252.5,184.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Foreach File\Resolve Client Data\Source Client Data"
+          TopLeft="243.5,82.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Foreach File\Resolve Client Data\Union All"
+          TopLeft="266,388.5" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Foreach File\Resolve Client Data\Resolved Client"
+          TopLeft="251,490.5" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Foreach File\Resolve Client Data\Company Lookup"
+          TopLeft="105.5,286.5" />
+        <EdgeLayout
+          Id="Package\Foreach File\Resolve Client Data.Paths[Union All Output 1]"
+          TopLeft="326.5,430.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach File\Resolve Client Data.Paths[Lookup No Match Output]"
+          TopLeft="303.166666666667,226.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.666666666667,60"
+              Start="0,0"
+              End="-117.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3850267379679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3850267379679"
+                    Point2="0,24.3850267379679"
+                    Point3="-4,24.3850267379679" />
+                  <mssgle:LineSegment
+                    End="-113.666666666667,24.3850267379679" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113.666666666667,24.3850267379679"
+                    Point2="-117.666666666667,24.3850267379679"
+                    Point3="-117.666666666667,28.3850267379679" />
+                  <mssgle:LineSegment
+                    End="-117.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-114.639720052084,29.3850267379679,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach File\Resolve Client Data.Paths[Lookup Match Output1]"
+          TopLeft="185.5,328.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="122.166666666667,60"
+              Start="0,0"
+              End="122.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5301794453508" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5301794453508"
+                    Point2="0,35.5301794453508"
+                    Point3="4,35.5301794453508" />
+                  <mssgle:LineSegment
+                    End="118.166666666667,35.5301794453508" />
+                  <mssgle:CubicBezierSegment
+                    Point1="118.166666666667,35.5301794453508"
+                    Point2="122.166666666667,35.5301794453508"
+                    Point3="122.166666666667,39.5301794453508" />
+                  <mssgle:LineSegment
+                    End="122.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.8919466145835,40.5301794453508,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach File\Resolve Client Data.Paths[Lookup Match Output]"
+          TopLeft="347.583333333333,226.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,162"
+              Start="0,0"
+              End="0,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,71.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach File\Resolve Client Data.Paths[Flat File Source Output]"
+          TopLeft="326.5,124.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach File\Resolve Client Data\Company Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach File\Resolve Client Data\Person Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Person Cache">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Load Person Cache\Person Data"
+          TopLeft="9.00000000000001,5.5" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Load Person Cache\Person Cache"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Load Person Cache.Paths[OLE DB Source Output]"
+          TopLeft="77,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Person Cache\Person Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="cmgr_AsureStorage_ssiscookbook"
+  DTS:DTSID="{26830525-0BD8-4610-8BAF-A37DA3F5BDEA}"
+  DTS:CreationName="AzureStorage">
+  <DTS:PropertyExpression
+    DTS:Name="AccountKey">@[$Project::Cmgr_AsureStorage_ssiscookbook_AccountKey]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <AzureStorageConnectionManager
+      ConnectionString="DefaultEndpointsProtocol=https;AccountName=ssiscookbook;EndpointSuffix=core.windows.net">
+      <AccountKey
+        Sensitive="1"></AccountKey>
+    </AzureStorageConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Products">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Product">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="ProductID" type="xs:unsignedShort" />
+              <xs:element minOccurs="0" name="ProductNumber" type="xs:string" />
+              <xs:element minOccurs="0" name="Color" type="xs:string" />
+              <xs:element minOccurs="0" name="StandardCost" type="xs:decimal" />
+              <xs:element minOccurs="0" name="ListPrice" type="xs:decimal" />
+              <xs:element minOccurs="0" name="Class" type="xs:string" />
+              <xs:element minOccurs="0" name="Size" type="xs:string" />
+              <xs:element minOccurs="0" name="Style" type="xs:string" />
+              <xs:element minOccurs="0" name="DaysToManufacture" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="ProductLine" type="xs:string" />
+              <xs:element minOccurs="0" name="DateModified" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="Name" type="xs:string" />
+              <xs:element minOccurs="0" name="SubCategory">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="SubCategoryName" type="xs:string" />
+                    <xs:element minOccurs="0" name="Category">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" name="CategoryName" type="xs:string" />
+                          <xs:element minOccurs="0" name="ProductCategoryID" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
