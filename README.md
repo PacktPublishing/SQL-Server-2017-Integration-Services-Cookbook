@@ -34,6 +34,3 @@ The last chapter of this book has been written using SQL Server 2017.
 * [SQL Server 2016 Reporting Services Cookbook](https://www.packtpub.com/big-data-and-business-intelligence/sql-server-2016-reporting-services-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781786461810)
 
 * [SQL Server Analysis Services 2012 Cube Development Cookbook](https://www.packtpub.com/big-data-and-business-intelligence/sql-server-analysis-services-2012-cube-development-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781849689809)
-
-### Suggestions and Feedback
-[Click here](https://docs.google.com/forms/d/e/1FAIpQLSe5qwunkGf6PUvzPirPDtuy1Du5Rlzew23UBp2S-P3wB-GcwQ/viewform) if you have any feedback or suggestions.
